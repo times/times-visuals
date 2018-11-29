@@ -1,0 +1,11 @@
+{
+  "name": "@times-visuals/template",
+  "version": "1.0.0",
+  "description": "Template for creating new packages",
+  "main": "src/index.js",
+  "author": "First Last <first.last@thetimes.co.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.6.3"
+  }
+}

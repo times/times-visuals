@@ -1,0 +1,7 @@
+{
+  "name": "@times-visuals/styles",
+  "version": "1.0.0",
+  "dev": "src/index.js",
+  "main": "dist/index.js",
+  "license": "MIT"
+}

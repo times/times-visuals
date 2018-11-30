@@ -1,0 +1,12 @@
+{
+  "name": "@times-visuals/bigNumber",
+  "version": "1.0.0",
+  "description": "Template for creating big numbers",
+  "main": "src/index.js",
+  "author": "Basile Simon <basile.simon@thetimes.co.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-countup": "^4.0.0"
+  }
+}

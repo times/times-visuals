@@ -1,0 +1,129 @@
+$breakpoint-tiny: 520px;
+$breakpoint-mobile: 767px;
+$breakpoint-tablet: 860px;
+$breakpoint-tabletLandscape: 1024px;
+$breakpoint-desktop: 1200px;
+$breakpoint-large: 1300px;
+
+@mixin smoothing() {
+  font-smoothing: grayscale;
+  -webkit-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.root {
+  .number {
+    width: 50%;
+    color: #425563;
+    font-size: 10rem;
+    line-height: 1.1em;
+    font-family: 'TimesModern-Bold';
+
+    @include smoothing();
+
+    &.big {
+      width: 100%;
+      color: #477fad;
+      font-size: 14rem;
+    }
+
+    @media only screen and (max-width: $breakpoint-desktop) {
+      font-size: 8rem;
+
+      &.big {
+        font-size: 11rem;
+      }
+    }
+
+    @media only screen and (max-width: $breakpoint-mobile) {
+      width: 100%;
+      font-size: 6.4rem;
+
+      &.big {
+        font-size: 6.4rem;
+      }
+    }
+
+    @media only screen and (max-width: $breakpoint-tiny) {
+      font-size: 4.8rem;
+
+      &.big {
+        font-size: 4.8rem;
+      }
+    }
+  }
+
+  .label {
+    width: 50%;
+    color: #425563;
+    font-size: 1.9rem;
+    line-height: 1.2em;
+    font-family: 'GillSansMTStd-Medium';
+
+    @include smoothing();
+
+    &.big {
+      width: 100%;
+    }
+
+    @media only screen and (max-width: $breakpoint-mobile) {
+      width: 100%;
+      font-size: 1.5rem;
+    }
+  }
+
+  &.big {
+    .number {
+      width: 100%;
+      font-size: 12rem;
+
+      @media only screen and (max-width: $breakpoint-desktop) {
+        font-size: 10rem;
+        line-height: 9rem;
+      }
+
+      @media only screen and (max-width: $breakpoint-mobile) {
+        font-size: 11rem;
+        line-height: 10rem;
+      }
+
+      @media only screen and (max-width: $breakpoint-tiny) {
+        font-size: 8rem;
+        line-height: 7rem;
+      }
+    }
+
+    .label {
+      width: 100%;
+      font-size: 1.9rem;
+    }
+  }
+
+  &.small {
+    .number {
+      width: 50%;
+      font-size: 8rem;
+
+      @media only screen and (max-width: $breakpoint-desktop) {
+        font-size: 6rem;
+      }
+
+      @media only screen and (max-width: $breakpoint-mobile) {
+        font-size: 6.4rem;
+      }
+
+      @media only screen and (max-width: $breakpoint-tiny) {
+        font-size: 4.8rem;
+      }
+    }
+
+    .label {
+      width: 100%;
+      font-size: 1.9rem;
+
+      @media only screen and (max-width: $breakpoint-desktop) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

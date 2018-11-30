@@ -31,7 +31,7 @@ const d3 = {
   ...interpolate,
 };
 
-export class Area extends React.Component {
+export class Line extends React.Component {
   drawChart(node) {
     node.innerHTML = '';
     const { width } = node.getBoundingClientRect();
@@ -145,7 +145,7 @@ export class Area extends React.Component {
         .curve(this.props.curve ? d3.curveBasis : d3.curveLinear);
 
       for (let i = 0; i < config.dataset.length; i++) {
-        const drawArea = g
+        const drawLine = g
           .selectAll('.area')
           .data([config.dataset[i]])
           .enter()
@@ -159,7 +159,7 @@ export class Area extends React.Component {
             fill: '#254251',
           });
         if (!this.props.noAnimation) {
-          drawArea
+          drawLine
             .transition()
             .duration(1000)
             .attrTween('d', function() {
@@ -196,4 +196,4 @@ export class Area extends React.Component {
   }
 }
 
-export default Area;
+export default Line;

@@ -1,0 +1,11 @@
+{
+ "name": "@times-visuals/joyplot",
+  "version": "1.0.0",
+  "description": "Joyplot layout",
+  "main": "src/index.js",
+  "author": "Basile Simon <basile.simon@thetimes.co.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.6.3"
+  }
+}

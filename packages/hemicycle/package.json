@@ -1,0 +1,11 @@
+{
+  "name": "@times-visuals/hemicycle",
+  "version": "1.0.0",
+  "description": "Hemicycle template to visualise some parliaments around the world",
+  "main": "src/index.js",
+  "author": "Basle Simon <basile.simon@thetimes.co.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.6.3"
+  }
+}

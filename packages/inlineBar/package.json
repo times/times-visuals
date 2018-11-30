@@ -1,0 +1,11 @@
+{
+  "name": "@times-visuals/inlineBar",
+  "version": "1.0.0",
+  "description": "Inline bar layout",
+  "main": "src/index.js",
+  "author": "Basile Simon <basile.simon@thetimes.co.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.6.3"
+  }
+}

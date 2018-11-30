@@ -16,6 +16,7 @@ import * as transition from 'd3-transition';
 import * as ease from 'd3-ease';
 import * as format from 'd3-format';
 import * as interpolate from 'd3-interpolate';
+import * as annotation from 'd3-svg-annotation';
 const d3 = {
   ...selection,
   ...jetpack,
@@ -29,6 +30,7 @@ const d3 = {
   ...ease,
   ...format,
   ...interpolate,
+  ...annotation,
 };
 
 export class Line extends React.Component {
@@ -152,6 +154,33 @@ export class Line extends React.Component {
         .enter()
         .append('path')
         .at({ class: style.area, d: area, fill: '#254151' });
+    }
+
+    if (this.props.annotation) {
+      const importAnnotation = [
+        {
+          type: annotation.annotationLabel,
+          note: {
+            title: this.props.annotation.title,
+            label: '',
+            wrap: 50,
+          },
+          x: config.xScale(this.props.annotation.x),
+          y: config.yScale(this.props.annotation.y),
+          dx: this.props.annotation.dx,
+          dy: this.props.annotation.dy,
+        },
+      ];
+
+      const makeAnnotation = annotation
+        .annotation()
+        .type(annotation.annotationLabel)
+        .annotations(importAnnotation);
+
+      g
+        .append('g')
+        .at({ class: style.annotation })
+        .call(makeAnnotation);
     }
   }
 

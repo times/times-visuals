@@ -2,8 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import Line from '../src';
-import data from './fixtures/';
+import { data, annotation } from './fixtures/';
 const colours = ['#95D5A0', '#4D718B', '#80b1e2', '#f37f2f'];
+
+console.log(data, annotation);
 
 storiesOf('Charts/Line', module)
   .add('Default', () => (
@@ -19,5 +21,15 @@ storiesOf('Charts/Line', module)
       area={true}
       percentage={true}
       yDomain={[0, 100]}
+    />
+  ))
+  .add('With annotation', () => (
+    <Line
+      data={data}
+      curve={'curveBasis'}
+      area={true}
+      percentage={true}
+      yDomain={[0, 100]}
+      annotation={annotation}
     />
   ));

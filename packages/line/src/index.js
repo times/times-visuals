@@ -52,6 +52,8 @@ export class Line extends React.Component {
       xDomain: d3.extent(this.props.data.map(e => e.date)),
       yDomain: this.props.yDomain,
       lines: this.props.lines,
+      xTicks: 4,
+      yTicks: 4,
     };
     config.usableWidth = width - config.margin.left - config.margin.right;
     config.usableHeight = height - config.margin.top - config.margin.bottom;
@@ -144,38 +146,12 @@ export class Line extends React.Component {
         .y0(() => config.yScale.range()[0])
         .curve(this.props.curve ? d3.curveBasis : d3.curveLinear);
 
-      for (let i = 0; i < config.dataset.length; i++) {
-        const drawLine = g
-          .selectAll('.area')
-          .data([config.dataset[i]])
-          .enter()
-          .append('g')
-          .at({
-            class: style.area,
-          })
-          .append('path')
-          .at({
-            d: area,
-            fill: '#254251',
-          });
-        if (!this.props.noAnimation) {
-          drawLine
-            .transition()
-            .duration(1000)
-            .attrTween('d', function() {
-              const interpolator = d3.interpolateArray(
-                config.dataset[i].map(e => ({
-                  date: e.date,
-                  value: 0,
-                })),
-                config.dataset[i]
-              );
-              return function(t) {
-                return area(interpolator(t));
-              };
-            });
-        }
-      }
+      g
+        .selectAll('.area')
+        .data([config.dataset])
+        .enter()
+        .append('path')
+        .at({ class: style.area, d: area, fill: '#254151' });
     }
   }
 

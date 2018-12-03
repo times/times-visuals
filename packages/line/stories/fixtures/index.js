@@ -1,4 +1,4 @@
-const data = [
+export const data = [
   {
     date: new Date('2018-01-01'),
     value: 90,
@@ -45,15 +45,10 @@ const data = [
   },
 ];
 
-const annotation = {
+export const annotation = {
   title: 'this is an annotation',
   x: new Date('2018-06-01'),
   y: 50,
   dx: 20,
   dy: -30,
-};
-
-module.exports = {
-  data,
-  annotation,
 };

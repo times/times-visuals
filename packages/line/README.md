@@ -25,8 +25,8 @@ import Line from '@times-visuals/line';
 // simplest version
 export default () => <Line data={data} yDomain={[0,100]}/>;
 
-// area chart
-export default () => <Line data={data} curve={'curveBasis'} area={true} yDomain={[0, 100]} />;
+// area chart with a custom curve
+export default () => <Line data={data} curve='curveBasis' area={true} yDomain={[0, 100]} />;
 
 // area chart with y axis formatted as percentages
 export default () => <Line

@@ -43,6 +43,25 @@ export class PollOfPolls extends React.Component {
       averages: this.props.averages,
       parties: this.props.parties,
       parseDate: d3.timeParse('%Y-%m-%d'),
+      circleRadius: this.props.circleRadius ? this.props.circleRadius : 4,
+      get usableWidth() {
+        return width - config.margin.left - config.margin.right;
+      },
+      get usableHeight() {
+        return config.height - config.margin.top - config.margin.bottom;
+      },
+      get xScale() {
+        return d3
+          .scaleTime()
+          .range([0, config.usableWidth])
+          .domain([new Date('2018-03-01'), new Date()]);
+      },
+      get yScale() {
+        return d3
+          .scaleLinear()
+          .range([config.usableHeight, 0])
+          .domain([0, 35]);
+      },
     };
 
     config.dataset.forEach(function(d, i, o) {
@@ -66,10 +85,6 @@ export class PollOfPolls extends React.Component {
       d['SPD'] = +d['SPD'];
     });
 
-    const usableWidth = width - config.margin.left - config.margin.right;
-    const usableHeight =
-      config.height - config.margin.top - config.margin.bottom;
-
     const svg = d3
       .select(node)
       .append('svg')
@@ -82,29 +97,16 @@ export class PollOfPolls extends React.Component {
     const g = svg.append('g');
     g.translate([config.margin.left, config.margin.top]);
 
-    const x = d3.scaleTime().range([0, usableWidth]);
-    const y = d3.scaleLinear().range([usableHeight, 0]);
-
-    /*
-       * d3.extent should return a [min,max] array
-       * We're hard-coding the y-axis extent in this case
-       */
-    const xExtent = [new Date('2018-03-01'), new Date()];
-    const yExtent = d3.extent(config.extent);
-
-    x.domain(xExtent);
-    y.domain(yExtent);
-
     // X-axis
     // renders full year on January,
     // short month names otherwise
     g
       .append('g')
       .attr('class', 'axis axis--x')
-      .attr('transform', 'translate(0,' + usableHeight + ')')
+      .translate([0, config.usableHeight])
       .call(
         d3
-          .axisBottom(x)
+          .axisBottom(config.xScale)
           .ticks(config.ticksno)
           .tickFormat(function(dataset) {
             if (d3.timeFormat('%-b')(dataset) === 'Jan') {
@@ -122,17 +124,11 @@ export class PollOfPolls extends React.Component {
       .attr('class', 'axis axis--y')
       .call(
         d3
-          .axisLeft(y)
+          .axisLeft(config.yScale)
           .ticks(config.ticksno)
           .tickSize(-width)
-          .tickPadding(window.innerWidth < 500 ? 0 : 20)
-          .tickFormat(d => {
-            if (d === 0) {
-              return '';
-            } else {
-              return d + '%';
-            }
-          })
+          .tickPadding(20)
+          .tickFormat((d, i, n) => (n[i + 1] ? d : d + '%'))
       );
 
     g
@@ -141,9 +137,9 @@ export class PollOfPolls extends React.Component {
       .enter()
       .append('circle')
       .at({
-        cx: d => x(d.date),
-        cy: d => y(d.poll),
-        r: 4,
+        cx: d => config.xScale(d.date),
+        cy: d => config.yScale(d.poll),
+        r: config.circleRadius,
         class: d => style[d.party],
       })
       .st({
@@ -156,8 +152,8 @@ export class PollOfPolls extends React.Component {
       // PoP line
       const popline = d3
         .line()
-        .x(d => x(d.date))
-        .y(d => y(d[config.parties[i].name]))
+        .x(d => config.xScale(d.date))
+        .y(d => config.yScale(d[config.parties[i].name]))
         .curve(d3.curveCardinal);
 
       g

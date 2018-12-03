@@ -23,6 +23,8 @@ const d3 = {
 import style from './style.scss';
 
 export class PollOfPolls extends React.Component {
+  state = { latestAverages: null };
+
   drawChart(node) {
     node.innerHTML = '';
     const { width } = node.getBoundingClientRect();
@@ -54,7 +56,7 @@ export class PollOfPolls extends React.Component {
         return d3
           .scaleTime()
           .range([0, config.usableWidth])
-          .domain([new Date('2018-03-01'), new Date()]);
+          .domain([new Date('2018-03-01'), new Date('2018-11-01')]);
       },
       get yScale() {
         return d3
@@ -73,6 +75,7 @@ export class PollOfPolls extends React.Component {
       }
     });
     config.averages.forEach(function(d, i) {
+      console.log(d, d.date, config.parseDate(d.date));
       d.date = config.parseDate(d.date);
     });
     config.averages.forEach(function(d, i) {
@@ -149,6 +152,7 @@ export class PollOfPolls extends React.Component {
     // One set of dots for each party
     // One line for each party
     for (var i = 0; i < config.parties.length; i++) {
+      console.log(config.averages);
       // PoP line
       const popline = d3
         .line()
@@ -177,18 +181,71 @@ export class PollOfPolls extends React.Component {
     }
   }
 
+  extractLatestAverages(averages, parties) {
+    const lastAverages = averages[averages.length - 1];
+    let averagesArray = [];
+    for (var k in lastAverages) {
+      if (lastAverages.hasOwnProperty(k)) {
+        let temp = {};
+
+        // Extract party colour through lookup
+        const fill = parties.find(value => {
+          for (var i in Object.keys(lastAverages)) {
+            if (Object.keys(lastAverages)[i] === value.name) {
+              return value.color.toString();
+            }
+          }
+        });
+
+        // Build temporary array of results
+        // then push it Scotty
+        temp['party'] = k;
+        temp['partyshort'] = k.replace('/', '');
+        temp['poll'] = Math.round(parseFloat(lastAverages[k]));
+        temp['color'] = fill.color;
+        averagesArray.push(temp);
+      }
+    }
+    averagesArray.shift();
+    averagesArray = averagesArray.sort(function(a, b) {
+      return parseFloat(b.poll) - parseFloat(a.poll);
+    });
+
+    // send that back up to be picked up by index.html
+    this.setState({ latestAverages: averagesArray });
+  }
+
   componentDidMount() {
-    if (this.chart && this.props.data) this.drawChart(this.chart, this.props);
+    if (this.chart && this.props.data && this.props.averages) {
+      this.extractLatestAverages(this.props.averages, this.props.parties);
+      this.drawChart(this.chart, this.props);
+    }
   }
 
   componentDidUpdate() {
-    if (this.chart && this.props.data) this.drawChart(this.chart, this.props);
+    //if (this.chart && this.props.data) this.drawChart(this.chart, this.props);
   }
 
   render() {
+    const { latestAverages } = this.state;
     return (
       <div className={style.Container}>
         <div ref={node => (this.chart = node)} />
+        {latestAverages ? (
+          <div className={style.labelsContainer}>
+            {latestAverages.map((e, key) => (
+              <div className={[style.label, style.text].join(' ')} key={key}>
+                <div
+                  className={[style.number, style[e.partyshort]].join(' ')}
+                  key={key}
+                >
+                  {e.poll}
+                </div>
+                {e.party}
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
     );
   }

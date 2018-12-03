@@ -46,90 +46,80 @@ text,
 
 .labelsContainer {
   width: 100%;
-  background-color: #f8f7f1;
   margin-top: 1px; // border top not showing on site???
   padding: {
     bottom: 1.5em;
   }
-  .line {
-    margin: 0 auto;
-    width: calc(100% - 40px);
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: {
-      top: 1em;
-      bottom: 1em;
-    }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 
-    .label {
-      width: 16.66%;
-      transform: translateX(30%);
+  .label {
+    width: 16.66%;
+    transform: translateX(30%);
+  }
+  .number {
+    font-family: TimesModern-Bold;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 20px;
+    font-weight: 800;
+    color: #000;
+    fill: #000;
+    &::before {
+      position: absolute;
+      display: inline-block;
+      content: '';
+      width: 10px;
+      height: 10px;
+      margin: 0 0.4rem;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      transform: translate(-20px, 3px);
     }
-    .number {
-      font-family: TimesModern-Bold;
-      -webkit-font-smoothing: auto;
-      -moz-osx-font-smoothing: grayscale;
-      font-size: 20px;
-      font-weight: 800;
-      color: #000;
-      fill: #000;
-      &::before {
-        position: absolute;
-        display: inline-block;
-        content: '';
-        width: 10px;
-        height: 10px;
-        margin: 0 0.4rem;
-        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-        transform: translate(-20px, 3px);
-      }
-    }
-    .AfD {
+    &.AfD {
       &::before {
         background: #4990e2;
       }
     }
-    .CDUCSU {
+    &.CDUCSU {
       &::before {
         background: #000;
       }
     }
-    .SPD {
+    &.SPD {
       &::before {
         background: #eb001f;
       }
     }
-    .Left {
+    &.Left {
       &::before {
         background: #8c3473;
       }
     }
-    .Green {
+    &.Green {
       &::before {
         background: #58ab27;
       }
     }
-    .FDP {
+    &.FDP {
       &::before {
         background: #f0d034;
       }
     }
-
-    @media only screen and (max-width: $breakpoint-small) {
-      //padding-left: calc(5%);
-      .label {
-        width: 33%;
-        padding-bottom: 1rem;
-      }
-      width: 95%;
-      padding-bottom: 0;
-    }
   }
+
+  @media only screen and (max-width: $breakpoint-small) {
+    //padding-left: calc(5%);
+    .label {
+      width: 33%;
+      padding-bottom: 1rem;
+    }
+    width: 95%;
+    padding-bottom: 0;
+  }
+
   @media only screen and (max-width: $breakpoint-small) {
     padding-top: 15px;
   }

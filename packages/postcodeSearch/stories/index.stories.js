@@ -3,6 +3,6 @@ import { storiesOf } from '@storybook/react';
 
 import PostcodeSearch from '../src';
 
-storiesOf('Helpers/PostcodeSearch', module).add('default', () => (
+storiesOf('Projects/PostcodeSearch', module).add('default', () => (
   <PostcodeSearch />
 ));

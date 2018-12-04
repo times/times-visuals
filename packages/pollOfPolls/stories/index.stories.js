@@ -15,4 +15,12 @@ storiesOf('Charts/PollOfPolls', module)
       averages={averages}
       circleRadius={10}
     />
+  ))
+  .add('Custom y domain', () => (
+    <PollOfPolls
+      parties={parties}
+      data={polls}
+      averages={averages}
+      yDomain={[0, 100]}
+    />
   ));

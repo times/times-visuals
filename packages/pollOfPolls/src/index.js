@@ -23,12 +23,11 @@ const d3 = {
 import style from './style.scss';
 
 export class PollOfPolls extends React.Component {
-  state = { latestAverages: null };
+  state = { polls: null, averages: null, latestAverages: null };
 
   drawChart(node) {
     node.innerHTML = '';
     const { width } = node.getBoundingClientRect();
-
     const config = {
       padding: 0,
       height: 450,
@@ -41,11 +40,14 @@ export class PollOfPolls extends React.Component {
         left: 50,
         bottom: 50,
       },
-      dataset: this.props.data,
-      averages: this.props.averages,
+      dataset: this.state.polls,
+      averages: this.state.averages,
       parties: this.props.parties,
-      parseDate: d3.timeParse('%Y-%m-%d'),
       circleRadius: this.props.circleRadius ? this.props.circleRadius : 4,
+      yDomainFromProps: this.props.yDomain ? this.props.yDomain : null,
+      get yExtent() {
+        return d3.extent(config.dataset.map(e => e.poll));
+      },
       get usableWidth() {
         return width - config.margin.left - config.margin.right;
       },
@@ -62,31 +64,11 @@ export class PollOfPolls extends React.Component {
         return d3
           .scaleLinear()
           .range([config.usableHeight, 0])
-          .domain([0, 35]);
+          .domain(
+            config.yDomainFromProps ? config.yDomainFromProps : config.yExtent
+          );
       },
     };
-
-    config.dataset.forEach(function(d, i, o) {
-      if (d.poll != 'NA') {
-        d.date = new Date(d.date);
-        d.poll = +d.poll;
-      } else {
-        o.splice(i, 1);
-      }
-    });
-    config.averages.forEach(function(d, i) {
-      console.log(d, d.date, config.parseDate(d.date));
-      d.date = config.parseDate(d.date);
-    });
-    config.averages.forEach(function(d, i) {
-      d.date = new Date(d.date);
-      d['AfD'] = +d['AfD'];
-      d['Green'] = +d['Green'];
-      d['CDU/CSU'] = +d['CDU/CSU'];
-      d['Left'] = +d['Left'];
-      d['FDP'] = +d['FDP'];
-      d['SPD'] = +d['SPD'];
-    });
 
     const svg = d3
       .select(node)
@@ -152,8 +134,6 @@ export class PollOfPolls extends React.Component {
     // One set of dots for each party
     // One line for each party
     for (var i = 0; i < config.parties.length; i++) {
-      console.log(config.averages);
-      // PoP line
       const popline = d3
         .line()
         .x(d => config.xScale(d.date))
@@ -211,19 +191,52 @@ export class PollOfPolls extends React.Component {
       return parseFloat(b.poll) - parseFloat(a.poll);
     });
 
-    // send that back up to be picked up by index.html
     this.setState({ latestAverages: averagesArray });
   }
 
+  // 2. Quick parsing of the data we pass in
+  // ie numbers as integers, dates as dates, etc.
+  // Will trigger a re-render
+  makePollsAndAverages(polls, averages) {
+    const parseDate = d3.timeParse('%Y-%m-%d');
+    polls.forEach(function(d, i, o) {
+      if (d.poll != 'NA') {
+        d.date = new Date(d.date);
+        d.poll = +d.poll;
+      } else {
+        o.splice(i, 1);
+      }
+    });
+    averages.forEach(function(d, i) {
+      d.date = new Date(d.date);
+      d['AfD'] = +d['AfD'];
+      d['Green'] = +d['Green'];
+      d['CDU/CSU'] = +d['CDU/CSU'];
+      d['Left'] = +d['Left'];
+      d['FDP'] = +d['FDP'];
+      d['SPD'] = +d['SPD'];
+    });
+
+    this.setState({ polls, averages });
+  }
+
+  // 1. Pick out most recent average polling
+  // Sort descending
+  // We use this to build the key at the bottom
+  // 2. Quick parsing of the data we pass in
+  // ie numbers as integers, dates as dates, etc.
   componentDidMount() {
     if (this.chart && this.props.data && this.props.averages) {
+      this.makePollsAndAverages(this.props.data, this.props.averages);
       this.extractLatestAverages(this.props.averages, this.props.parties);
-      this.drawChart(this.chart, this.props);
     }
   }
 
+  // Once the above has finished it gets set to state
+  // This updates the component, now we can draw our chart
   componentDidUpdate() {
-    //if (this.chart && this.props.data) this.drawChart(this.chart, this.props);
+    if (this.state.polls && this.state.averages)
+      this.drawChart(this.chart, this.props, this.state);
   }
 
   render() {

@@ -35,14 +35,22 @@ export class LeafletMap extends React.Component {
           style={{ height: '500px' }}
           zoomControl={true}
           dragging={true}
-          center={position}
-          zoom={16}
+          center={this.props.position ? this.props.position : position}
+          zoom={this.props.zoom ? this.props.zoom : 16}
           ref="map"
         >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png"
-            attribution="Tiles courtesy of <a href=&quot;http://openstreetmap.se/&quot; target=&quot;_blank&quot;>OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href=&quot;http://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a>"
-          />
+          {this.props.tileset ? (
+            <TileLayer
+              url={this.props.tileset.url}
+              attribution={this.props.tileset.attribution}
+              ext={this.props.tileset.ext}
+            />
+          ) : (
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png"
+              attribution="Tiles courtesy of <a href=&quot;http://openstreetmap.se/&quot; target=&quot;_blank&quot;>OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href=&quot;http://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a>"
+            />
+          )}
           {geoData ? (
             <GeoJSON
               ref="boundaries"
@@ -51,7 +59,10 @@ export class LeafletMap extends React.Component {
               onEachFeature={this.onEachFeature}
             />
           ) : null}
-          <Marker position={position} icon={icon} />
+          <Marker
+            position={this.props.position ? this.props.position : position}
+            icon={icon}
+          />
         </Map>
       </div>
     );

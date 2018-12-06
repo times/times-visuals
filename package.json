@@ -17,6 +17,7 @@
     "@storybook/react": "^4.0.9",
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.1",
+    "file-loader": "^2.0.0",
     "lerna": "^3.2.1",
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",

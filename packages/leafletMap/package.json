@@ -1,0 +1,13 @@
+{
+  "name": "@times-visuals/leafletMap",
+  "version": "1.0.0",
+  "description": "Template for creating leaflet maps",
+  "main": "src/index.js",
+  "author": "Basile Simon <basile.simon@thetimes.co.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "leaflet": "^1.3.4",
+    "react": "^16.6.3",
+    "react-leaflet": "^2.1.2"
+  }
+}

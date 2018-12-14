@@ -1,5 +1,5 @@
 {
-  "name": "@times-visuals/timelineBubbles",
+  "name": "@times-visuals/timeline-bubbles",
   "version": "1.0.0",
   "description": "Bubbles on a timeline",
   "main": "src/index.js",

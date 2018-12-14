@@ -1,0 +1,15 @@
+{
+  "name": "@times-visuals/web-component-harness",
+  "version": "1.0.0",
+  "description": "Harness for loading a React component as a web component",
+  "main": "src/index.js",
+  "author": "Chris Hutchinson <chris.hutchinson@thetimes.co.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "react": "^16.6.3"
+  },
+  "devDependencies": {
+    "@times-visuals/script-loader": "^1.0.0"
+  }
+}

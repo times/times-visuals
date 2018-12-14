@@ -1,14 +1,14 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
+import React from "react";
+import { storiesOf } from "@storybook/react";
 
-import { parties, polls, averages } from './fixtures';
-import PollOfPolls from '../src';
+import { parties, polls, averages } from "./fixtures";
+import PollOfPolls from "../src";
 
-storiesOf('Projects/PollOfPolls', module)
-  .add('default', () => (
+storiesOf("Projects/Poll of Polls", module)
+  .add("default", () => (
     <PollOfPolls parties={parties} data={polls} averages={averages} />
   ))
-  .add('Ridiculous circles', () => (
+  .add("Ridiculous circles", () => (
     <PollOfPolls
       parties={parties}
       data={polls}
@@ -16,7 +16,7 @@ storiesOf('Projects/PollOfPolls', module)
       circleRadius={10}
     />
   ))
-  .add('Custom y domain', () => (
+  .add("Custom y domain", () => (
     <PollOfPolls
       parties={parties}
       data={polls}

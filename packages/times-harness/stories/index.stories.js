@@ -15,7 +15,7 @@ storiesOf("Helpers/Times Harness", module).add("default", () => (
     <p>
       <code>
         {`module.exports = webpackGenerator("./src/index.js", { baseDirectory: '', distDirectory: '' },
-        "&lt;p&gt;some HTML here&lt;/p&gt;");`}
+        "<p>some HTML here</p>");`}
       </code>
     </p>
   </div>

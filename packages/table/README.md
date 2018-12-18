@@ -17,5 +17,41 @@ $ npm add @times-visuals/table
 ```js
 import Table from "@times-visuals/table";
 
-export default () => <Table />;
+const data = [
+  {
+    Imports: "65",
+    Exports: "26",
+    rankImports: "117",
+    rankExports: "125"
+  },
+  {
+    Imports: "43",
+    Exports: "12",
+    rankImports: "117",
+    rankExports: "125"
+  }
+];
+
+const columns = [
+  {
+    Imports: {
+      label: "Imports",
+      isSortable: true
+    },
+    Exports: {
+      label: "Exports",
+      isSortable: true
+    },
+    rankImports: {
+      label: "Rank Imports",
+      isSortable: true
+    },
+    rankExports: {
+      label: "Rank Exports",
+      isSortable: true
+    }
+  }
+];
+
+export default () => <Table data={data} columns={columns} />;
 ```

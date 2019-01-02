@@ -1,0 +1,27 @@
+.Loader {
+  position: relative;
+  display: inline-block;
+  width: 7.5rem;
+  height: 7.5rem;
+
+  .spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: require(url("./assets/spinner@2x.png"));
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: spin 1.2s linear infinite;
+
+    @keyframes :local(spin) {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

@@ -4,6 +4,20 @@ $background-buff: #f9f9f9;
 
 $breakpoint-mobile: 767px;
 
+@font-face {
+  font-family: "GillSansW01-Bold";
+  src: url("https://www.thetimes.co.uk/fonts/GillSansW01-Bold.eot");
+  src: local("☺"),
+    url("https://www.thetimes.co.uk/fonts/GillSansW01-Bold.eot?iefix")
+      format("eot"),
+    url("https://www.thetimes.co.uk/fonts/GillSansW01-Bold.woff") format("woff"),
+    url("https://www.thetimes.co.uk/fonts/GillSansW01-Bold.svg#webfont")
+      format("svg"),
+    local("☺");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .Table {
   width: 100%;
   border-collapse: collapse;

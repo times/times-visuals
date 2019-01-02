@@ -1,33 +1,26 @@
-export const data = [
-  {
-    Imports: "65",
-    Exports: "26",
-    rankImports: "117",
-    rankExports: "125"
-  },
-  {
-    Imports: "43",
-    Exports: "12",
-    rankImports: "117",
-    rankExports: "125"
-  }
-];
-
 export const columns = {
-  Imports: {
-    label: "Imports",
+  rank: {
+    label: "Rank",
+    style: {
+      textAlign: "left"
+    },
+    isSortable: true,
+    render: v => parseInt(v).toLocaleString()
+  },
+  name: {
+    label: "Company",
+    style: {
+      minWidth: "36%",
+      textAlign: "left"
+    },
     isSortable: true
   },
-  Exports: {
-    label: "Exports",
+  pay_gap: {
+    label: "Pay gap, mean (median)",
     isSortable: true
   },
-  rankImports: {
-    label: "Rank Imports",
-    isSortable: true
-  },
-  rankExports: {
-    label: "Rank Exports",
+  bonus_gap: {
+    label: "Bonus gap, mean (median)",
     isSortable: true
   }
 };

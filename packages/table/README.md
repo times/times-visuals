@@ -17,40 +17,33 @@ $ npm add @times-visuals/table
 ```js
 import Table from "@times-visuals/table";
 
-const data = [
-  {
-    Imports: "65",
-    Exports: "26",
-    rankImports: "117",
-    rankExports: "125"
-  },
-  {
-    Imports: "43",
-    Exports: "12",
-    rankImports: "117",
-    rankExports: "125"
-  }
-];
-
 const columns = [
   {
-    Imports: {
-      label: "Imports",
-      isSortable: true
+  rank: {
+    label: "Rank",
+    style: {
+      textAlign: "left"
     },
-    Exports: {
-      label: "Exports",
-      isSortable: true
+    isSortable: true,
+    render: v => parseInt(v).toLocaleString()
+  },
+  name: {
+    label: "Company",
+    style: {
+      minWidth: "36%",
+      textAlign: "left"
     },
-    rankImports: {
-      label: "Rank Imports",
-      isSortable: true
-    },
-    rankExports: {
-      label: "Rank Exports",
-      isSortable: true
-    }
+    isSortable: true
+  },
+  pay_gap: {
+    label: "Pay gap, mean (median)",
+    isSortable: true
+  },
+  bonus_gap: {
+    label: "Bonus gap, mean (median)",
+    isSortable: true
   }
+};
 ];
 
 export default () => <Table data={data} columns={columns} />;

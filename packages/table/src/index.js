@@ -1,8 +1,10 @@
 // @flow
+/* global window */
 import React from "react";
 import joinClasses from "join-classes";
 import Select from "react-select";
-import PropTypes from "prop-types";
+
+import LoadingIndicator from "../LoadingIndicator";
 
 import style from "./style.scss";
 
@@ -15,7 +17,59 @@ const reorder = (a, b) =>
     {}
   );
 
-export class Table extends React.Component {
+type Search = Event => void;
+type UpdateShow = ({ value: number, label: number }) => void;
+type SortBy = string => () => void;
+type Action = {
+  type: string
+};
+type Loader = (
+  ?number,
+  ?number,
+  ?string,
+  ?string,
+  ?boolean
+) => Promise<Array<*>>;
+type Counter = () => Promise<?number>;
+type Reducer = (State, ?Action) => State;
+type Dispatch = Action => Promise<void>;
+type State = {
+  skip: number,
+  show: number,
+  searchTerm: ?string,
+  sortBy: ?string,
+  reverseSort: boolean,
+  data: ?Array<*>,
+  count: ?number,
+  isLoading: boolean,
+  error: boolean
+};
+type Props = {
+  loader: Loader,
+  counter: Counter,
+  reducer: Reducer,
+  columns: ?{
+    [string]: {
+      label: string,
+      render?: (React$Element<any>) => React$Element<any>,
+      isSortable: boolean
+    }
+  },
+  searchPlaceholder: string
+};
+const defaultLoader: Loader = () => Promise.resolve([]);
+const defaultReducer: Reducer = state => state;
+
+class Table extends React.Component<Props, State> {
+  static defaultProps = {
+    loader: defaultLoader,
+    columns: null,
+    reducer: defaultReducer,
+    searchPlaceholder: "Search..."
+  };
+
+  searchTimeout = null;
+
   state = {
     show: 5,
     skip: 0,
@@ -28,9 +82,9 @@ export class Table extends React.Component {
     error: false
   };
 
-  dispatch = action =>
+  dispatch: Dispatch = action =>
     new Promise(resolve => {
-      let newState = PropTypes.State;
+      let newState: State;
       const { reducer } = this.props;
       const { skip, show } = this.state;
 
@@ -111,20 +165,110 @@ export class Table extends React.Component {
       this.setState(() => reducer(newState, action), resolve);
     });
 
-  state = {
-    show: 5,
-    skip: 0,
-    searchTerm: null,
-    sortBy: "rank",
-    reverseSort: false,
-    data: null,
-    count: null,
-    isLoading: false,
-    error: false
+  componentWillMount() {
+    const { loader, counter } = this.props;
+    const { skip, show } = this.state;
+
+    this.dispatch({
+      type: "REQUEST_DATA"
+    });
+
+    Promise.all([counter(), loader(skip, show)]).then(([count, data]) => {
+      this.dispatch({
+        type: "RECEIVE_DATA",
+        data
+      });
+      this.dispatch({
+        type: "RECEIVE_COUNT",
+        count
+      });
+    });
+  }
+
+  componentDidUpdate(oldProps: Props, oldState: State) {
+    const { loader } = this.props;
+    const { skip, show, searchTerm, sortBy, reverseSort } = this.state;
+
+    if (
+      skip !== oldState.skip ||
+      show !== oldState.show ||
+      searchTerm !== oldState.searchTerm ||
+      sortBy !== oldState.sortBy ||
+      reverseSort !== oldState.reverseSort
+    ) {
+      // This timeout prevents the "Loading..." overlay from appearing immediately
+      // This is handy to prevent UI flickering for pre-cached endpoints
+      // The timeout is cleared in the `.then` of the `loader()` call, so that
+      //   it doesn't get fired after a successful HTTP request
+      const loadTimeout = setTimeout(() => {
+        this.dispatch({
+          type: "REQUEST_DATA"
+        });
+      }, 200);
+
+      loader(skip, show, searchTerm, sortBy, reverseSort)
+        .then(data => {
+          clearTimeout(loadTimeout);
+
+          this.dispatch({
+            type: "RECEIVE_DATA",
+            data
+          });
+        })
+        .catch(() => {
+          this.dispatch({
+            type: "RECEIVE_DATA_ERROR"
+          });
+        });
+    }
+  }
+
+  previous = () => {
+    this.dispatch({
+      type: "PREVIOUS_PAGE"
+    });
   };
+
+  next = () => {
+    this.dispatch({
+      type: "NEXT_PAGE"
+    });
+  };
+
+  search: Search = event => {
+    if (!event.target) return;
+    if (event.target instanceof HTMLInputElement) {
+      const term = event.target.value;
+
+      if (this.searchTimeout) clearTimeout(this.searchTimeout);
+
+      this.searchTimeout = setTimeout(() => {
+        this.dispatch({
+          type: "SET_SEARCH_TERM",
+          term
+        });
+      }, 800);
+    }
+  };
+
+  updateShow: UpdateShow = ({ value }) => {
+    this.dispatch({
+      type: "SET_SHOW",
+      show: value
+    });
+  };
+
+  sortBy: SortBy = key => () => {
+    this.dispatch({
+      type: "SET_SORT_BY",
+      key
+    });
+  };
+
   render() {
-    const { columns, searchPlaceholder, data } = this.props;
+    const { columns, searchPlaceholder } = this.props;
     const {
+      data,
       skip,
       show,
       count,
@@ -133,8 +277,9 @@ export class Table extends React.Component {
       reverseSort,
       isLoading
     } = this.state;
+
     return (
-      <div>
+      <div className={style.Container}>
         <section className={style.Controls}>
           <Select
             value={show}
@@ -155,6 +300,7 @@ export class Table extends React.Component {
             onChange={this.search}
           />
         </section>
+
         <table
           className={joinClasses(
             style.Table,
@@ -168,6 +314,7 @@ export class Table extends React.Component {
                 {Object.entries(columns).map(([key, column]) => (
                   <th
                     key={key}
+                    onClick={column.isSortable ? this.sortBy(key) : () => {}}
                     className={joinClasses(
                       column.isSortable && style.isSortable,
                       sortBy === key && style.isSorted,
@@ -232,6 +379,7 @@ export class Table extends React.Component {
               ))}
           </tbody>
         </table>
+
         <section className={style.Navigation}>
           {count &&
             data &&
@@ -267,5 +415,4 @@ export class Table extends React.Component {
     );
   }
 }
-
 export default Table;

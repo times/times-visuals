@@ -1,4 +1,4 @@
-module.exports = componentHtml => `<!DOCTYPE html>
+module.exports = (componentName, componentHtml, mode) => `<!DOCTYPE html>
 <html lang="en" class="no-js has-flex">
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,12 @@ module.exports = componentHtml => `<!DOCTYPE html>
   <title>Test article harness | The Times &amp; The Sunday Times</title>
 
   <link rel="shortcut icon" href="//www.thetimes.co.uk/d/754/img/icons/favicon.ico" />
+
+  ${
+    mode === "production"
+      ? `<link rel="import" href="./${componentName}/${componentName}.html" />`
+      : ""
+  }
 
   <script>
   var nuk = nuk || {};

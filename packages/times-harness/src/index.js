@@ -2,19 +2,26 @@ const path = require("path");
 const webpack = require("webpack");
 const CreateFileWebpack = require("create-file-webpack");
 
-const htmlTemplate = require("./template");
+const htmlTemplate = require("./html-template");
+const componentTemplate = require("./component-template");
 
-module.exports = (entry, paths, componentHtml) => ({
+module.exports = (
+  entry,
+  paths,
+  componentName,
+  componentHtml,
+  mode = "development"
+) => ({
   entry,
 
   output: {
-    path: paths.distDirectory,
+    path: `${paths.distDirectory}/${componentName}`,
     filename: "index.js",
     publicPath: "/",
     libraryTarget: "umd"
   },
 
-  mode: "development",
+  mode,
 
   module: {
     rules: [
@@ -42,7 +49,6 @@ module.exports = (entry, paths, componentHtml) => ({
       },
       {
         test: /\.js$/,
-        // exclude: /(node_modules)/,
         include: [
           paths.baseDirectory,
           path.resolve(__dirname, "node_modules/@times-visuals/"),
@@ -70,12 +76,18 @@ module.exports = (entry, paths, componentHtml) => ({
   devtool: "inline-source-map",
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
+    mode === "development" && new webpack.HotModuleReplacementPlugin(),
+    mode === "development" && new webpack.NamedModulesPlugin(),
+    mode === "production" &&
+      new CreateFileWebpack({
+        path: paths.distDirectory,
+        fileName: `${componentName}/${componentName}.html`,
+        content: componentTemplate(componentName)
+      }),
     new CreateFileWebpack({
       path: paths.distDirectory,
       fileName: "index.html",
-      content: htmlTemplate(componentHtml)
+      content: htmlTemplate(componentName, componentHtml, mode)
     })
-  ]
+  ].filter(Boolean)
 });

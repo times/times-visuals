@@ -24,3 +24,13 @@ export const columns = {
     isSortable: true
   }
 };
+
+export const data = [
+  {
+    name: "STOKE CITY FOOTBALL CLUB",
+    rank: 1,
+    pay_gap: "92.5%",
+    bonus_gap: "84%",
+    pay_quartile: "24%"
+  }
+];

@@ -360,7 +360,7 @@ class Table extends React.Component<Props, State> {
                   </td>
                 </tr>
               )}
-
+            {console.log(data)}
             {!isLoading &&
               data &&
               data.length > 0 &&

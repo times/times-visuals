@@ -10,11 +10,12 @@ storiesOf("Charts/Table", module).add("default", () => (
   <Table
     enablePageFilter={true}
     enableSearch={true}
-    columns={columns}
-    onPageFilterChange={action("drop down filter changed")}
-    onSearchChange={action("text search entered")}
     enableNavigation={true}
+    columns={columns}
     data={data}
+    defaultSortBy="rank"
+    onPageFilterChange={action("page filter changed")}
+    onSearchChange={action("text search entered")}
     onSortChange={action("column sort clicked")}
     onNextClick={action("next clicked")}
     onPreviousClick={action("previous clicked")}

@@ -27,14 +27,10 @@ class Table extends React.Component<Props, State> {
     searchPlaceholder: "Search"
   };
 
-  componentWillMount() {}
-
-  componentDidUpdate(oldProps: Props, oldState: State) {}
-
   render() {
     const {
-      pageFilter,
-      search,
+      enableSearch,
+      enablePageFilter,
       columns,
       onPageFilterChange,
       onSearchChange,
@@ -42,7 +38,7 @@ class Table extends React.Component<Props, State> {
       onSortChange,
       onPreviousClick,
       onNextClick,
-      navigation
+      enableNavigation
     } = this.props;
     const {
       skip,
@@ -56,7 +52,7 @@ class Table extends React.Component<Props, State> {
     return (
       <div className={style.Container}>
         <section className={style.Controls}>
-          {pageFilter && (
+          {enablePageFilter && (
             <Select
               value={show}
               clearable={false}
@@ -70,7 +66,7 @@ class Table extends React.Component<Props, State> {
             />
           )}
 
-          {search && (
+          {enableSearch && (
             <input
               type="text"
               name="search"
@@ -87,7 +83,7 @@ class Table extends React.Component<Props, State> {
                 {Object.entries(columns).map(([key, column]) => (
                   <th
                     key={key}
-                    onClick={column.isSortable ? onSortChange(key) : () => {}}
+                    onClick={column.isSortable ? onSortChange : () => {}}
                     className={joinClasses(
                       column.isSortable && style.isSortable,
                       sortBy === key && style.isSorted,
@@ -135,7 +131,7 @@ class Table extends React.Component<Props, State> {
               ))}
           </tbody>
         </table>
-        {navigation && (
+        {enableNavigation && (
           <section className={style.Navigation}>
             {count &&
               data &&

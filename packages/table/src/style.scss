@@ -1,0 +1,372 @@
+$blue: #286595;
+$border-color: #d6d6d6;
+$background-buff: #f9f9f9;
+
+$breakpoint-mobile: 767px;
+
+@font-face {
+  font-family: "GillSansW01-Bold";
+  src: url("https://www.thetimes.co.uk/fonts/GillSansW01-Bold.eot");
+  src: local("☺"),
+    url("https://www.thetimes.co.uk/fonts/GillSansW01-Bold.eot?iefix")
+      format("eot"),
+    url("https://www.thetimes.co.uk/fonts/GillSansW01-Bold.woff") format("woff"),
+    url("https://www.thetimes.co.uk/fonts/GillSansW01-Bold.svg#webfont")
+      format("svg"),
+    local("☺");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.Table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid $border-color;
+
+  &:after {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: rgba(240, 240, 240, 0.8);
+    content: "Loading...";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  thead,
+  tbody {
+    tr.messageRow {
+      td {
+        padding-top: 6rem;
+        text-align: center;
+        font-family: "TimesDigital-Regular", serif;
+        color: #6b6b6b;
+      }
+    }
+
+    th,
+    td {
+      text-align: right;
+      padding: 1rem 0.6rem;
+      vertical-align: top;
+
+      &:first-of-type {
+        padding-left: 0;
+      }
+
+      &:last-of-type {
+        padding-right: 0;
+      }
+    }
+
+    th {
+      font-family: "GillSansW01-Bold", Arial, sans-serif;
+      font-weight: normal;
+      position: relative;
+
+      &.isSortable {
+        padding-right: 1.2rem;
+
+        &:last-of-type {
+          padding-right: 1.2rem;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: 1.4rem;
+          right: 0rem;
+          color: $blue;
+          font-size: 0.9rem;
+        }
+
+        &.isSorted {
+          &.sortUp {
+            &:after {
+              content: "▲";
+            }
+          }
+
+          &.sortDown {
+            &:after {
+              content: "▼";
+            }
+          }
+        }
+      }
+    }
+
+    td {
+      height: 6rem;
+      font-family: "GillSansMTStd-Medium", Arial, sans-serif;
+    }
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid $border-color;
+  }
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    border-top: 0;
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    tr > * {
+      display: block !important;
+    }
+    tr {
+      display: flex;
+      vertical-align: top !important;
+      width: 100%;
+      min-width: 100%;
+      flex-direction: column;
+      background-color: $background-buff;
+      border: 1px solid #efefef;
+      padding: 2rem;
+      margin-bottom: 0.9rem;
+
+      td {
+        border-bottom: 0;
+        height: auto;
+        padding: 0.8rem 0;
+        text-align: right !important;
+        width: 100% !important;
+        font-size: 1.6rem;
+
+        &:nth-of-type(2) {
+          order: -1;
+          text-align: left !important;
+          font-weight: bold;
+
+          &:before {
+            content: "";
+          }
+        }
+
+        &:before {
+          content: attr(data-name);
+          font-family: "GillSansMTStd-Medium", Arial, sans-serif;
+          font-weight: bold;
+          float: left;
+        }
+      }
+
+      &.messageRow {
+        td {
+          text-align: center !important;
+        }
+      }
+    }
+  }
+}
+
+.Controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 0 2rem;
+
+  .Select {
+    margin-left: 0;
+    margin-right: auto;
+    min-width: 6rem;
+    align-self: start;
+    font-family: "GillSansMTStd-Medium", Arial, sans-serif;
+    border-color: #dbdbdb;
+
+    :global(.Select-control) {
+      border-radius: 0;
+      padding: 0.2rem 1.2rem 0.2rem 1.4rem;
+    }
+
+    :global(.Select-value) {
+      font-size: 1.6rem;
+      line-height: 40px;
+      padding-left: 1.5rem;
+      top: 2px;
+    }
+
+    :global(.Select-arrow-zone) {
+      padding-right: 0;
+
+      &:hover {
+        :global(.Select-arrow) {
+          border-color: transparent;
+        }
+      }
+    }
+
+    &:global(.is-open) {
+      margin-bottom: 1px;
+      :global(.Select-control) {
+        border-color: #d9d9d9 #ccc #b3b3b3;
+        border-bottom: 0;
+      }
+
+      :global(.Select-arrow) {
+        top: 2px;
+        border-width: initial;
+      }
+    }
+
+    :global(.Select-arrow) {
+      border-color: transparent !important;
+      font-family: iconfont;
+      display: inline-block;
+      line-height: 0;
+      vertical-align: middle;
+      font-weight: 400;
+      font-style: normal;
+      speak: none;
+      text-decoration: inherit;
+      text-transform: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 6px;
+      height: 1rem;
+      padding: 0;
+      margin: 0;
+      width: 0;
+      color: $blue;
+
+      &:before {
+        content: "\E001";
+      }
+    }
+
+    :global(.Select-menu-outer) {
+      border-top: 0;
+      border-radius: 0 !important;
+      top: 2px;
+
+      :global(.Select-option) {
+        background-color: #fff;
+        font-size: 1.6rem;
+        color: $blue;
+        height: 4rem;
+        border-radius: 0 !important;
+        padding: 1.2rem 0.8rem 1.1rem 1.5rem;
+
+        @media screen and (min-width: $breakpoint-mobile) {
+          padding-top: 1.1rem;
+          padding-left: 1.4rem;
+        }
+
+        :last-child {
+          border-radius: 0;
+        }
+
+        &:global(.is-selected) {
+          position: relative;
+          color: #333;
+          &:before {
+            content: "·";
+            position: absolute;
+            top: 50%;
+            left: 0.5rem;
+            transform: translateY(-40%);
+            font-size: 2rem;
+            line-height: 1rem;
+          }
+        }
+
+        &:hover {
+          background-color: #f0f0f0;
+          color: #3b3b3b;
+        }
+
+        &:active {
+          background-color: #006699;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  input[type="text"] {
+    margin-left: auto;
+    margin-right: 0;
+    border: 1px solid #dbdbdb;
+    padding: 1rem 0.8rem 0.6rem;
+    font-family: "GillSansMTStd-Medium", Arial, sans-serif;
+    font-size: 1.2rem;
+    font-size: 1.4rem;
+    min-width: 25rem;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 1.6rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
+
+.Navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem 0;
+
+  p {
+    display: table;
+    margin-top: auto !important;
+    margin-bottom: auto;
+    margin-left: 0;
+    margin-right: auto;
+    font-family: "GillSansMTStd-Medium", Arial, sans-serif;
+  }
+
+  aside {
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button {
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: 50%;
+      height: 3.5rem;
+      width: 3.5rem;
+      text-align: center;
+      line-height: 0;
+      font-size: 1.3rem;
+      margin-left: 1.2rem;
+      color: $blue;
+
+      &:not(:disabled) {
+        &:hover {
+          border-color: #006699;
+          color: #006699;
+          background-color: #fff;
+        }
+
+        &:active {
+          border-color: #006699;
+          color: #fff;
+          background-color: #006699;
+        }
+      }
+
+      &:disabled {
+        background: transparent;
+        color: #dbdbdb;
+      }
+    }
+  }
+}

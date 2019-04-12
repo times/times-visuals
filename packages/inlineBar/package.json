@@ -1,5 +1,5 @@
 {
-  "name": "@times-visuals/inlineBar",
+  "name": "@times-visuals/inline-bar",
   "version": "1.0.0",
   "description": "Inline bar layout",
   "main": "src/index.js",

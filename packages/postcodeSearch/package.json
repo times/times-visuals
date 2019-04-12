@@ -1,5 +1,5 @@
 {
-  "name": "@times-visuals/postcodeSearch",
+  "name": "@times-visuals/postcode-search",
   "version": "1.0.0",
   "description": "Postcode search boilerplate code",
   "main": "src/index.js",

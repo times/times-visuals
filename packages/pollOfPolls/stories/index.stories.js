@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react";
 import { parties, polls, averages } from "./fixtures";
 import PollOfPolls from "../src";
 
-storiesOf("Projects/Poll of Polls", module)
+storiesOf("Projects/PollOfPolls", module)
   .add("default", () => (
     <PollOfPolls parties={parties} data={polls} averages={averages} />
   ))
@@ -22,5 +22,22 @@ storiesOf("Projects/Poll of Polls", module)
       data={polls}
       averages={averages}
       yDomain={[0, 100]}
+    />
+  ))
+  .add("Custom date range", () => (
+    <PollOfPolls
+      parties={parties}
+      data={polls}
+      averages={averages}
+      startDate="2018-06-01"
+      endDate="2018-09-10"
+    />
+  ))
+  .add("Data source", () => (
+    <PollOfPolls
+      parties={parties}
+      data={polls}
+      averages={averages}
+      dataSource="Times research"
     />
   ));

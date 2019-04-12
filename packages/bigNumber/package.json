@@ -1,5 +1,5 @@
 {
-  "name": "@times-visuals/bigNumber",
+  "name": "@times-visuals/big-number",
   "version": "1.0.0",
   "description": "Template for creating big numbers",
   "main": "src/index.js",

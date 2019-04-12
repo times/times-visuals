@@ -1,30 +1,69 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
+import { storiesOf } from "@storybook/react";
 
-import { colors } from '../src';
+import { colors } from "../src";
 
-const config = {
-  barColor: colors.yellow,
-};
+const rgbToHex = (r, g, b) =>
+  "#" + [r, g, b].map(x => x.toString(16).padStart(2, "0")).join("");
 
-storiesOf('Styles', module).add('Digital colours', () => (
-  <ul>
-    {Object.keys(colors).map((key, index) => {
-      const { r, g, b } = colors[key];
+const ColorGrid = ({ grid }) => (
+  <ul
+    style={{
+      display: "flex",
+      flexDirection: "row",
+      listStyleType: "none",
+      flexWrap: "wrap",
+      margin: 0,
+      padding: 0
+    }}
+  >
+    {Object.keys(grid).map((key, index) => {
+      const { r, g, b } = grid[key];
+      const hex = rgbToHex(r, g, b);
+
       return (
-        <li>
+        <li
+          style={{
+            marginRight: "1rem",
+            marginBottom: "1rem"
+          }}
+        >
           <div
             key={index}
             style={{
-              width: '50px',
-              height: '50px',
+              width: "80px",
+              height: "80px",
               backgroundColor: `rgb(${r}, ${g}, ${b})`,
+              marginBottom: "0.2rem",
+              borderRadius: "3px"
             }}
           />
-          {key}
+          <p
+            style={{
+              color: "#898989",
+              margin: 0
+            }}
+          >
+            {hex}
+          </p>
+          <p
+            style={{
+              color: "#000",
+              margin: 0,
+              fontSize: "0.8rem"
+            }}
+          >
+            {key}
+          </p>
         </li>
       );
     })}
   </ul>
-));
+);
+
+storiesOf("Styles/Colors", module)
+  .add("Digital", () => <ColorGrid grid={colors.digital} />)
+  .add("UK Political Parties", () => (
+    <ColorGrid grid={colors.ukPoliticalParties} />
+  ));

@@ -3,4 +3,4 @@ import { storiesOf } from "@storybook/react";
 
 import Template from "../src";
 
-storiesOf("Helpers/Template", module).add("default", () => <Template />);
+storiesOf("Sample/Template", module).add("default", () => <Template />);

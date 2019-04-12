@@ -29,15 +29,15 @@ storiesOf("Projects/PollOfPolls", module)
       parties={parties}
       data={polls}
       averages={averages}
-      startDate={"2018-06-01"}
-      endDate={"2018-09-10"}
+      startDate="2018-06-01"
+      endDate="2018-09-10"
     />
   ))
-  .add("Custom data source", () => (
+  .add("Data source", () => (
     <PollOfPolls
       parties={parties}
       data={polls}
       averages={averages}
-      dataSource={"Times research"}
+      dataSource="Times research"
     />
   ));

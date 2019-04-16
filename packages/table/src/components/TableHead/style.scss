@@ -1,0 +1,82 @@
+@import "../../settings";
+
+thead {
+  display: none;
+
+  @media screen and (min-width: $breakpoint-mobile) {
+    display: table-header-group;
+  }
+
+  tr {
+    th {
+      padding: 1rem;
+      font-family: "GillSansW01-Bold", Arial, sans-serif;
+      font-weight: normal;
+
+      &:first-of-type {
+        padding-left: 0;
+      }
+
+      &:last-of-type {
+        padding-right: 0;
+      }
+
+      &.alignLeft {
+        text-align: left;
+      }
+
+      &.alignRight {
+        text-align: right;
+      }
+
+      &.isSortable {
+        position: relative;
+        cursor: pointer;
+
+        &:before,
+        &:after {
+          display: inline-block;
+          width: 2rem;
+          color: #ddd;
+          font-size: 1rem;
+          content: "▲▼";
+        }
+
+        &:before {
+          display: none;
+          padding-right: 0.5rem;
+        }
+
+        &:after {
+          padding-left: 0.5rem;
+        }
+
+        &.sortAsc {
+          &:before,
+          &:after {
+            color: $arrow-blue;
+            content: "▼";
+          }
+        }
+
+        &.sortDesc {
+          &:before,
+          &:after {
+            color: $arrow-blue;
+            content: "▲";
+          }
+        }
+
+        &.alignRight {
+          &:before {
+            display: inline-block;
+          }
+
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

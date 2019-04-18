@@ -1,6 +1,7 @@
 // Libraries
 import React from "react";
 import { drawChart } from "./chart";
+import { makeParliament } from "./parliament";
 
 // Styles
 import style from "./style.scss";
@@ -8,7 +9,7 @@ import style from "./style.scss";
 export class Hemicycle extends React.Component {
   componentDidMount() {
     const { data } = this.props;
-    drawChart(this.chart, data);
+    drawChart(this.chart, data, makeParliament);
   }
 
   render() {
@@ -16,7 +17,7 @@ export class Hemicycle extends React.Component {
     return (
       <div className={style.Container}>
         <div ref={node => (this.chart = node)} />
-        {legend ? (
+        {legend && (
           <div className={style.labelsContainer}>
             {data.map((e, key) => (
               <div className={[style.label, style.text].join(" ")} key={key}>
@@ -27,11 +28,11 @@ export class Hemicycle extends React.Component {
                 >
                   {e.seats}
                 </div>
-                {e.longName ? e.longName : e.name}
+                {e.longName || e.name}
               </div>
             ))}
           </div>
-        ) : null}
+        )}
       </div>
     );
   }

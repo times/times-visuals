@@ -29,5 +29,5 @@ import Hemicycle from '@times-visuals/hemicycle';
 
 export default () => <Hemicycle data={data}/>;
 
-export default () => <Hemicycle data={data} legend={data}/>;
+export default () => <Hemicycle data={data} legend={true}/>;
 ```

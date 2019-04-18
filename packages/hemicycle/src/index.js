@@ -13,11 +13,11 @@ export class Hemicycle extends React.Component {
   }
 
   render() {
-    const { data, legend } = this.props;
+    const { data, showLegend } = this.props;
     return (
       <div className={style.Container}>
         <div ref={node => (this.chart = node)} />
-        {legend && (
+        {showLegend && (
           <div className={style.labelsContainer}>
             {data.map((e, key) => (
               <div className={[style.label, style.text].join(" ")} key={key}>

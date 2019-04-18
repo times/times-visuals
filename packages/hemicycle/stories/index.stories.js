@@ -9,5 +9,5 @@ storiesOf("Charts/Hemicycle", module).add("default", () => (
 ));
 
 storiesOf("Charts/Hemicycle", module).add("with legend", () => (
-  <Hemicycle data={data} legend={true} />
+  <Hemicycle data={data} showLegend={true} />
 ));

@@ -30,7 +30,7 @@ const makeParliament = (data, width, height, innerRadiusCoef) => {
 
   let nRows = 0;
   let maxSeatNumber = 0;
-  let b = 0.5; // was ist das
+  let b = 0.5;
 
   (() => {
     const a = innerRadiusCoef / (1 - innerRadiusCoef);

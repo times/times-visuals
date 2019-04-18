@@ -24,13 +24,14 @@ const TableBody = ({ columns, rows }) => (
             Object.entries(columns).map(([key, column]) => (
               <td
                 key={key}
+                data-label={column.label}
                 className={joinClasses(
                   column.alignLeft && style.alignLeft,
                   column.alignRight && style.alignRight
                 )}
                 style={column.style || {}}
               >
-                {columns[key].render ? columns[key].render(row[key]) : row[key]}
+                {columns[key].render ? columns[key].render(row) : row[key]}
               </td>
             ))}
 

@@ -1,0 +1,52 @@
+table {
+  tbody {
+    tr {
+      td {
+        font-family: "TimesDigitalW04-Regular", "TimesDigital-Regular";
+
+        &:before {
+          font-family: "GillSansMTStd-Medium", Arial, sans-serif;
+        }
+
+        &[data-label="Rank"] {
+          span {
+            opacity: 0.7;
+          }
+        }
+
+        &[data-label="Name"] {
+          justify-content: flex-start;
+          order: -1;
+          padding-top: 0;
+          padding-bottom: 1rem;
+          font-weight: bold;
+          border-top: 0;
+
+          &:before {
+            content: none;
+          }
+        }
+
+        &[data-label="Rise/Fall"] {
+          div {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            svg {
+              width: 1.5rem;
+              padding-right: 0.2rem;
+            }
+          }
+        }
+
+        @media screen and (min-width: 768px) {
+          &[data-label="Name"] {
+            padding: 2rem 1rem;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+}

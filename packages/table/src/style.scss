@@ -1,20 +1,28 @@
 @import "./fonts";
 @import "./settings";
 
-.Table {
-  width: calc(100% - 4rem);
-  margin: 2rem;
-  border-collapse: collapse;
-  font-family: "TimesDigitalW04-Regular", "TimesDigital-Regular";
+.temp {
+  width: 100%;
+  padding: 2rem;
 
-  //background-color: #f9f9f9;
+  .Controls {
+    display: flex;
+  }
 
-  //-webkit-font-smoothing: antialiased;
-  //-moz-osx-font-smoothing: grayscale;
+  .Table {
+    width: 100%;
+    border-collapse: collapse;
 
-  border-top: 1px solid $border-grey;
+    //font-family: "TimesDigitalW04-Regular", "TimesDigital-Regular";
 
-  /*&:after {
+    //background-color: #f9f9f9;
+
+    //-webkit-font-smoothing: antialiased;
+    //-moz-osx-font-smoothing: grayscale;
+
+    //border-top: 1px solid $border-grey;
+
+    /*&:after {
     opacity: 0;
     transition: opacity 0.4s ease;
     background: rgba(240, 240, 240, 0.8);
@@ -28,7 +36,7 @@
     pointer-events: none;
   }*/
 
-  /*thead,
+    /*thead,
   tbody {
     tr.messageRow {
       td {
@@ -360,4 +368,5 @@
       }
     }
   }*/
+  }
 }

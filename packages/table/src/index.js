@@ -3,35 +3,51 @@ import React from "react";
 import joinClasses from "join-classes";
 
 // Components
+import ShowSelect from "./components/ShowSelect";
 import TableHead from "./components/TableHead";
 import TableBody from "./components/TableBody";
+
+//  Helpers
+import { SORT_ASCENDING, SORT_DESCENDING } from "./helpers";
 
 // Styles
 import style from "./style.scss";
 
 class Table extends React.Component<Props, State> {
-  /*static defaultProps = {
-    tableConfig: {
-      columns: {},
-      rows: {
-        show: 5,
-        page: 0
-      }
-    }
-  };*/
+  static defaultProps = {
+    enableShowSelect: true,
+
+    //enableSearch: true,
+    //enableNavigation: true,
+    //enableShowSelect: true,
+
+    skip: 0,
+    show: 5,
+
+    onSortChange: () => {},
+    onShowChange: () => {}
+  };
 
   state = {
-    //searchTerm: null,
-    //searchPlaceholder: "Search"
-
-    page: 0,
-    perPage: 5,
-
-    sortBy: null,
-    sortDesc: false
-
     //count: null,
     //error: false,
+    //searchTerm: null,
+    //searchPlaceholder: "Search"
+    //page: 0,
+    //perPage: 5,
+
+    //filterPage: 5,
+
+    skip: this.props.skip,
+    show: this.props.show,
+
+    preSortColumn: this.props.preSortColumn,
+    sortColumn: this.props.sortColumn,
+
+    sortDirection:
+      this.props.sortDirection === SORT_DESCENDING
+        ? SORT_DESCENDING
+        : SORT_ASCENDING
   };
 
   handleSearchChange = e => {
@@ -51,79 +67,111 @@ class Table extends React.Component<Props, State> {
     );*/
   };
 
-  handlePageFilterChange = ({ value }) => {
-    /*const { onPageFilterChange } = this.props;
-
+  onShowChange = ({ value }) => {
     this.setState(
-      () => ({
-        show: value
-      }),
-      () => {
-        onPageFilterChange(value);
-      }
-    );*/
+      () => ({ show: value }),
+      () => this.props.onShowChange(this.state.show)
+    );
   };
 
   onSort = key => {
-    const { columnConfig } = this.props;
-    const { sortBy, sortDesc } = this.state;
+    const { columnConfig, onSortChange } = this.props;
+    const { sortColumn, sortDirection } = this.state;
 
     if (!columnConfig[key].isSortable) return;
 
     this.setState(
-      () => ({ sortBy: key, sortDesc: sortBy === key ? !sortDesc : false })
-      //() => onSortChange(this.state.sortBy, this.state.sortDesc)
+      () => ({
+        sortColumn: key,
+        sortDirection:
+          sortColumn === key && sortDirection === SORT_ASCENDING
+            ? SORT_DESCENDING
+            : SORT_ASCENDING
+      }),
+      () => onSortChange(this.state.sortColumn, this.state.sortDirection)
     );
   };
 
-  dataSort = (a, b) => {
-    const { sortBy, sortDesc } = this.state;
-    const sortDir = sortDesc ? -1 : 1;
+  sortData(data, sortColumn, sortDirection) {
+    if (!sortColumn) return data;
 
-    return a[sortBy] > b[sortBy]
-      ? 1 * sortDir
-      : a[sortBy] < b[sortBy]
-        ? -1 * sortDir
-        : 0;
-  };
+    return data.slice().sort((a, b) => {
+      const valueA = a[sortColumn];
+      const valueB = b[sortColumn];
 
-  getCurrentRows = () => {
+      if (typeof valueA === "boolean" && typeof valueB === "boolean")
+        return sortDirection === SORT_ASCENDING
+          ? valueA - valueB
+          : valueB - valueA;
+
+      if (valueA !== null && valueB === null)
+        return sortDirection === SORT_ASCENDING ? 1 : -1;
+
+      if (valueA === null && valueB !== null)
+        return sortDirection === SORT_ASCENDING ? -1 : 1;
+
+      if (isNaN(valueA) && !isNaN(valueB))
+        return sortDirection === SORT_ASCENDING ? 1 : -1;
+
+      if (!isNaN(valueA) && isNaN(valueB))
+        return sortDirection === SORT_ASCENDING ? -1 : 1;
+
+      if (isNaN(valueA) && isNaN(valueB))
+        return sortDirection === SORT_ASCENDING
+          ? valueA.localeCompare(valueB)
+          : valueB.localeCompare(valueA);
+
+      return sortDirection === SORT_ASCENDING
+        ? parseFloat(valueA) - parseFloat(valueB)
+        : parseFloat(valueB) - parseFloat(valueA);
+    });
+  }
+
+  getRows = () => {
     const { dataDump } = this.props;
-    const { page, perPage, sortBy, sortDesc } = this.state;
+    const { skip, show, preSortColumn, sortColumn, sortDirection } = this.state;
 
-    if (dataDump) return dataDump.sort(this.dataSort);
+    if (dataDump) {
+      const preSort = this.sortData(dataDump, preSortColumn, sortDirection);
+      const data = this.sortData(preSort, sortColumn, sortDirection);
+      return data.filter((r, index) => index >= skip && index < skip + show);
+    }
   };
 
   render() {
-    const { tableConfig, columnConfig } = this.props;
-    const { sortBy, sortDesc } = this.state;
-
-    const rows = this.getCurrentRows();
+    const { columnConfig, enableShowSelect } = this.props;
+    const { show, sortColumn, sortDirection } = this.state;
 
     return (
-      <React.Fragment>
-        {/*<TableControls />*/}
+      <div className={style.temp}>
+        <section className={style.Controls}>
+          {enableShowSelect && (
+            <ShowSelect show={show} onShowChange={this.onShowChange} />
+          )}
+
+          {/*enableSearch && (
+            <input
+              type="text"
+              name="search"
+              placeholder={searchPlaceholder}
+              onChange={this.handleSearchChange}
+            />
+          )*/}
+        </section>
 
         <table className={style.Table}>
           {columnConfig && (
             <TableHead
               columns={columnConfig}
-              sortBy={sortBy}
-              sortDesc={sortDesc}
+              sortColumn={sortColumn}
+              sortDirection={sortDirection}
               onSort={this.onSort}
             />
           )}
 
-          <TableBody
-            columns={columnConfig}
-            rows={rows}
-            //dataDump={dataDump}
-            //sortBy={sortBy}
-            //sortDesc={sortDesc}
-            //onSort={this.onSort}
-          />
+          <TableBody columns={columnConfig} rows={this.getRows()} />
         </table>
-      </React.Fragment>
+      </div>
     );
   }
 }

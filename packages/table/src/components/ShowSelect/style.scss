@@ -1,0 +1,122 @@
+@import "../../settings";
+
+.Select {
+  font-family: "GillSansMTStd-Medium", Arial, sans-serif;
+  border-color: $border-grey;
+
+  //margin-left: 0;
+  //margin-right: auto;
+  //align-self: start;
+
+  /*:global(.Select-control) {
+    border-radius: 0;
+    padding: 0.2rem 1.2rem 0.2rem 1.4rem;
+  }
+
+  :global(.Select-value) {
+    top: 0.2rem;
+    padding-left: 1.5rem;
+    font-size: 1.6rem;
+    line-height: 4rem;
+  }
+
+  :global(.Select-arrow-zone) {
+    padding-right: 0;
+
+    &:hover {
+      :global(.Select-arrow) {
+        border-color: transparent;
+      }
+    }
+  }
+
+  &:global(.is-open) {
+    margin-bottom: 0.1rem;
+
+    :global(.Select-control) {
+      border-color: #d9d9d9 #ccc #b3b3b3;
+      border-bottom: 0;
+    }
+
+    :global(.Select-arrow) {
+      top: 0.2rem;
+      border-width: initial;
+    }
+  }
+
+  :global(.Select-arrow) {
+    display: inline-block;
+    width: 0;
+    height: 1rem;
+    margin: 0;
+    padding: 0;
+    color: $arrow-blue;
+    font-size: 0.6rem;
+    line-height: 0;
+    font-family: iconfont;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: inherit;
+    text-transform: none;
+    border-color: transparent !important;
+    vertical-align: middle;
+    speak: none;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    &:before {
+      content: "\E001";
+    }
+  }
+
+  :global(.Select-menu-outer) {
+    top: 0.2rem;
+    border-top: 0;
+    border-radius: 0 !important;
+
+    :global(.Select-option) {
+      height: 4rem;
+      padding: 1.2rem 0.8rem 1.1rem 1.5rem;
+      color: $arrow-blue;
+      font-size: 1.6rem;
+      background-color: white;
+      border-radius: 0 !important;
+
+      @media screen and (min-width: $breakpoint-mobile) {
+        padding-top: 1.1rem;
+        padding-left: 1.4rem;
+      }
+
+      :last-child {
+        border-radius: 0;
+      }
+
+      &:global(.is-selected) {
+        position: relative;
+        color: #333;
+
+        &:before {
+          content: "·";
+          position: absolute;
+          top: 50%;
+          left: 0.5rem;
+          transform: translateY(-40%);
+          font-size: 2rem;
+          line-height: 1rem;
+        }
+      }
+
+      &:hover {
+        color: #3b3b3b;
+        background-color: #f0f0f0;
+      }
+
+      &:active {
+        color: white;
+        background-color: #006699;
+      }
+    }
+  }*/
+}

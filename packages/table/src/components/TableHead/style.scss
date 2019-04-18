@@ -8,8 +8,10 @@ thead {
   }
 
   tr {
+    border-top: 0.1rem solid $border-grey;
+
     th {
-      padding: 1rem;
+      padding: 1.5rem 1rem;
       font-family: "GillSansW01-Bold", Arial, sans-serif;
       font-weight: normal;
 

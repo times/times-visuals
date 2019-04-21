@@ -1,29 +1,41 @@
-import React from 'react';
+// Libraries
+import React from "react";
+import { drawChart } from "./chart";
+import { makeParliament } from "./parliament";
 
-export default () => (
-  <main>
-    <ul>
-      <li>
-        <a href="https://times.github.io/dataviz-catalogue/hemicycle/">
-          Catalogue reference
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/times/times-hemicycle-react">
-          React implementation
-        </a>
-      </li>
-      <li>
-        <a href="https://components.timesdev.tools/sys/builder/?component=lib2/midterms2018SenateResults/SenateResults.json">
-          US Senate results
-        </a>
-      </li>
-      <li>
-        This layout is based on{' '}
-        <a href="https://github.com/geoffreybr/d3-parliament">
-          <code>d3-parliament</code>
-        </a>, though it was re-implemented as a bunch of IFFEs, lol
-      </li>
-    </ul>
-  </main>
-);
+// Styles
+import style from "./style.scss";
+
+export class Hemicycle extends React.Component {
+  componentDidMount() {
+    const { data } = this.props;
+    drawChart(this.chart, data, makeParliament);
+  }
+
+  render() {
+    const { data, showLegend } = this.props;
+    return (
+      <div className={style.Container}>
+        <div ref={node => (this.chart = node)} />
+        {showLegend && (
+          <div className={style.labelsContainer}>
+            {data.map((e, key) => (
+              <div className={[style.label, style.text].join(" ")} key={key}>
+                <div className={style.circle} style={{ background: e.color }} />
+                <div
+                  className={[style.number, style[e.name]].join(" ")}
+                  key={key}
+                >
+                  {e.seats}
+                </div>
+                {e.longName || e.name}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+}
+
+export default Hemicycle;

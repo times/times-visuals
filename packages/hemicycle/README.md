@@ -1,4 +1,4 @@
-# Hemicycle Hemicycle
+# Hemicycle
 
 > This is the description for the component
 
@@ -14,8 +14,20 @@ $ npm add @times-visuals/hemicycle
 
 ## Usage
 
-```js
-import Hemicycle from '@times-visuals/hemicycle;
+Takes a data object in the following format:
 
-export default () => <Hemicycle />;
+[{
+id: "upa",
+name: "UPA",
+seats: 66,
+color: #00BFFF,
+longName: "United Progressive Alliance"
+}]
+
+```js
+import Hemicycle from '@times-visuals/hemicycle';
+
+export default () => <Hemicycle data={data}/>;
+
+export default () => <Hemicycle data={data} showLegend={true}/>;
 ```

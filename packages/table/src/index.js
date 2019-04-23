@@ -204,23 +204,6 @@ const {
 
 /*
 <section className={style.Controls}>
-  {enablePageFilter && (
-    <Select
-      value={{
-        value: show,
-        label: show
-      }}
-      clearable={false}
-      searchable={false}
-      onChange={this.handlePageFilterChange}
-      options={[5, 10, 20, 50].map(v => ({
-        value: v,
-        label: v
-      }))}
-      className={style.Select}
-    />
-  )}
-
   {enableSearch && (
     <input
       type="text"

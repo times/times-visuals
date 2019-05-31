@@ -1,4 +1,4 @@
-# Canvid
+# Canvas Video
 
 > This is the description for the component
 
@@ -6,19 +6,19 @@
 
 ```bash
 # Yarn
-$ yarn add @times-visuals/canvid
+$ yarn add @times-visuals/canvas-video
 
 # npm
-$ npm add @times-visuals/canvid
+$ npm add @times-visuals/canvas-video
 ```
 
 ## Usage
 
 ```js
-import Canvid from "@times-visuals/canvid";
+import CanvasVideo from "@times-visuals/canvas-video";
 
 export default () => (
-  <Canvid
+  <CanvasVideo
     file="s3-eu-west-1.amazonaws.com/nuk-tnl-editorial-prod-staticassets/2019/bercow-sprite.png"
     frames={180}
     fps={60}

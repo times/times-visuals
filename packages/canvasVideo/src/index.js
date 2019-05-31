@@ -7,7 +7,7 @@ export class CanvasVideo extends React.Component {
     const { file, frames, cols, fps, width, height } = this.props;
 
     const canvidControl = canvid({
-      selector: ".video",
+      selector: this.video,
       videos: {
         clip1: {
           src: file,
@@ -24,7 +24,7 @@ export class CanvasVideo extends React.Component {
     });
   }
   render() {
-    return <div className={"video"} />;
+    return <div ref={video => (this.video = video)} />;
   }
 }
 export default CanvasVideo;

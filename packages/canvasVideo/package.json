@@ -1,0 +1,12 @@
+{
+  "name": "@times-visuals/canvas-video",
+  "version": "1.0.0",
+  "description": "A React component for rendering a spritesheet as a video using canvas",
+  "main": "src/index.js",
+  "author": "Daniel Clark <daniel.clark@the-times.co.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "canvid": "^1.6.0",
+    "react": "^16.6.3"
+  }
+}

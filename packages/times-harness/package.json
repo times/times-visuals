@@ -2,9 +2,14 @@
   "name": "@times-visuals/times-harness",
   "version": "1.0.0",
   "description": "Webpack harness environment for The Times website",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "dev": "src/index.js",
   "author": "Chris Hutchinson <chris.hutchinson@thetimes.co.uk>",
   "license": "MIT",
+  "scripts": {
+    "build": "babel src --out-dir lib"
+  },
   "dependencies": {
     "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
@@ -22,5 +27,8 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.27.1"
+  },
+  "devDependencies": {
+    "@times-visuals/babel-configuration": "^1.0.0"
   }
 }

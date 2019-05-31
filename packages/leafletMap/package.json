@@ -2,12 +2,20 @@
   "name": "@times-visuals/leaflet-map",
   "version": "1.0.0",
   "description": "Template for creating leaflet maps",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "dev": "src/index.js",
   "author": "Basile Simon <basile.simon@thetimes.co.uk>",
   "license": "MIT",
+  "scripts": {
+    "build": "babel src --out-dir lib"
+  },
   "dependencies": {
     "leaflet": "^1.3.4",
     "react": "^16.6.3",
     "react-leaflet": "^2.1.2"
+  },
+  "devDependencies": {
+    "@times-visuals/babel-configuration": "^1.0.0"
   }
 }

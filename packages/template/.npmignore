@@ -1,0 +1,8 @@
+__tests__
+coverage
+node_modules
+src
+stories
+.babelrc
+.eslintignore
+*.tgz

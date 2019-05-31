@@ -7,6 +7,9 @@
   "dev": "src/index.js",
   "author": "Basile Simon <basile.simon@thetimes.co.uk>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "babel src --out-dir lib"
   },

@@ -6,6 +6,9 @@
   "module": "lib/index.js",
   "dev": "src/index.js",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "babel src --out-dir lib"
   },

@@ -7,6 +7,9 @@
   "dev": "src/index.js",
   "author": "Daniel Clark <daniel.clark@the-times.co.uk>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "babel src --out-dir lib"
   },

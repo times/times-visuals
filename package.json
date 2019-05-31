@@ -9,7 +9,8 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "lerna run build --stream"
+    "build": "lerna run build --stream",
+    "publish-all": "sh ./scripts/publish.sh"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",

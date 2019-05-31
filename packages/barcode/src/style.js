@@ -1,4 +1,6 @@
-.Barcode {
+import styled from "styled-components";
+
+export const BarcodeContainer = styled.div`
   svg {
     height: 100px;
     overflow: visible;
@@ -13,41 +15,41 @@
       font-weight: 100;
     }
 
-    :global(.circleImport) {
+    .circleImport {
       fill: rgb(37, 66, 81);
     }
 
-    :global(.circleExport) {
+    .circleExport {
       fill: rgb(224, 171, 38);
     }
 
-    :global(.xAxis) path {
+    .xAxis path {
       display: none;
     }
 
-    :global(.annotation) path {
+    .annotation path {
       stroke: #696969;
       stroke-width: 2px;
       fill: none;
     }
 
-    :global(.annotation-note-title),
-    :global(.annotation-note-label) {
+    .annotation-note-title,
+    .annotation-note-label {
       font: 1.5rem GillSansMTStd-Medium, GillSansW01-Medium;
       text-transform: none;
       transform: translateX(-10px);
     }
 
-    :global(.importAnnotation) {
-      :global(.annotation) path {
+    .importAnnotation {
+      .annotation path {
         stroke: rgb(37, 66, 81);
       }
-      :global(.annotation) text {
+      .annotation text {
         fill: #fff;
         font-size: 2.4rem;
         font-family: TimesModern-Bold;
       }
-      :global(.annotation-note-content) rect {
+      .annotation-note-content rect {
         width: 8rem;
         height: 3rem;
         fill: rgb(37, 66, 81);
@@ -57,16 +59,16 @@
       }
     }
 
-    :global(.exportAnnotation) {
-      :global(.annotation) path {
+    .exportAnnotation {
+      .annotation path {
         stroke: rgb(224, 171, 38);
       }
-      :global(.annotation) text {
+      .annotation text {
         fill: #fff;
         font-size: 2.4rem;
         font-family: TimesModern-Bold;
       }
-      :global(.annotation-note-content) rect {
+      .annotation-note-content rect {
         width: 8rem;
         height: 3rem;
         fill: rgb(224, 171, 38);
@@ -76,8 +78,8 @@
       }
     }
 
-    :global(.xAxis) line {
+    .xAxis line {
       display: none;
     }
   }
-}
+`;

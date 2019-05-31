@@ -1,29 +1,35 @@
-import React from 'react';
-import CountUp from 'react-countup';
-import style from './style.scss';
+import React from "react";
+import CountUp from "react-countup";
 
-export class BigNumber extends React.Component {
-  render() {
-    const { number, label, type, always = null, suffix, prefix } = this.props;
-    return (
-      <div className={style.root}>
-        <div className={[style.number, style[type]].join(' ')}>
-          {number === 0 ? (
-            number
-          ) : (
-            <CountUp
-              start={0}
-              end={number}
-              useEasing={true}
-              separator=","
-              suffix={suffix}
-              prefix={prefix}
-            />
-          )}
-        </div>
-        <div className={[style.label, style[type]].join(' ')}>{label}</div>
-      </div>
-    );
-  }
-}
+import { BigNumberContainer } from "./style";
+
+export const BigNumber = ({
+  number,
+  label,
+  color,
+  type,
+  suffix,
+  prefix,
+  defaultStart = 0
+}) => (
+  <BigNumberContainer type={type} color={color}>
+    <h1>
+      {number === 0 ? (
+        number
+      ) : (
+        <CountUp
+          start={defaultStart}
+          end={number}
+          suffix={suffix}
+          prefix={prefix}
+          useEasing={true}
+          separator=","
+        />
+      )}
+    </h1>
+
+    <label>{label}</label>
+  </BigNumberContainer>
+);
+
 export default BigNumber;

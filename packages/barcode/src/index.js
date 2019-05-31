@@ -1,7 +1,7 @@
 import React from "react";
-import { drawChart } from "./chart";
 
-import style from "./style.scss";
+import { drawChart } from "./chart";
+import { BarcodeContainer } from "./style";
 
 class Barcode extends React.Component {
   clearChart = node => {
@@ -28,9 +28,9 @@ class Barcode extends React.Component {
 
   render() {
     return (
-      <div className={style.Barcode}>
+      <BarcodeContainer>
         <svg ref={node => (this.node = node)} />
-      </div>
+      </BarcodeContainer>
     );
   }
 }

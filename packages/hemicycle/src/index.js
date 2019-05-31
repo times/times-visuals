@@ -1,10 +1,9 @@
-// Libraries
 import React from "react";
+
 import { drawChart } from "./chart";
 import { makeParliament } from "./parliament";
 
-// Styles
-import style from "./style.scss";
+import { HemicycleContainer, LegendContainer } from "./style";
 
 export class Hemicycle extends React.Component {
   componentDidMount() {
@@ -14,26 +13,25 @@ export class Hemicycle extends React.Component {
 
   render() {
     const { data, showLegend } = this.props;
+
     return (
-      <div className={style.Container}>
+      <HemicycleContainer>
         <div ref={node => (this.chart = node)} />
+
         {showLegend && (
-          <div className={style.labelsContainer}>
+          <LegendContainer>
             {data.map((e, key) => (
-              <div className={[style.label, style.text].join(" ")} key={key}>
-                <div className={style.circle} style={{ background: e.color }} />
-                <div
-                  className={[style.number, style[e.name]].join(" ")}
-                  key={key}
-                >
-                  {e.seats}
-                </div>
+              <li key={key}>
+                <i style={{ "background-color": e.color }} />
+
+                <h1>{e.seats}</h1>
+
                 {e.longName || e.name}
-              </div>
+              </li>
             ))}
-          </div>
+          </LegendContainer>
         )}
-      </div>
+      </HemicycleContainer>
     );
   }
 }

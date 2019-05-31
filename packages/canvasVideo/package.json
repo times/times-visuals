@@ -1,5 +1,5 @@
 {
-  "name": "@times-visuals/canvasVideo",
+  "name": "@times-visuals/canvas-video",
   "version": "1.0.0",
   "description": "A React component for rendering a spritesheet as a video using canvas",
   "main": "src/index.js",

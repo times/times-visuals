@@ -1,6 +1,5 @@
 import React from "react";
 import canvid from "canvid";
-import style from "./style.scss";
 
 export class CanvasVideo extends React.Component {
   componentDidMount() {

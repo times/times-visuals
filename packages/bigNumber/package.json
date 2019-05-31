@@ -6,7 +6,9 @@
   "author": "Basile Simon <basile.simon@thetimes.co.uk>",
   "license": "MIT",
   "dependencies": {
+    "@times-visuals/styles": "^1.0.0",
     "react": "^16.6.3",
-    "react-countup": "^4.0.0"
+    "react-countup": "^4.0.0",
+    "styled-components": "^4.2.1"
   }
 }

@@ -2,22 +2,14 @@
   "name": "@times-visuals/hemicycle",
   "version": "1.0.0",
   "description": "Hemicycle template to visualise some parliaments around the world",
-  "main": "babel-dist/index.js",
-  "scripts": {
-    "build": "microbundle"
-  },
+  "main": "src/index.js",
   "author": "Basle Simon <basile.simon@thetimes.co.uk>",
   "license": "MIT",
   "dependencies": {
+    "d3-jetpack": "^2.0.20",
+    "d3-selection": "^1.4.0",
     "react": "^16.6.3",
     "styled-components": "^4.2.1"
   },
-  "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "microbundle": "^0.11.0",
-    "sass": "^1.20.1"
-  }
+  "devDependencies": {}
 }

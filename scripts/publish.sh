@@ -4,7 +4,7 @@
 if ! git diff-index --quiet HEAD --
 then
   git add .
-  git commit -m "chore: add docs"
+  git commit -m "chore(release): publish docs [skip ci]"
 fi;
 
 echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc

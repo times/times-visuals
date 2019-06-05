@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/bar-chart",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Bar chart template",
   "main": "src/index.js",
   "author": "Basile Simon <basile.simon@thetimes.co.uk>",

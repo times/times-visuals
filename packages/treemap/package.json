@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/treemap",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Treemap ",
   "main": "src/index.js",
   "author": "Basile Simon <basile.simon@thetimes.co.uk",

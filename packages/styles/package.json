@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/styles",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "lib/index.js",
   "module": "lib/index.js",
   "dev": "src/index.js",
@@ -12,6 +12,6 @@
     "build": "babel src --out-dir lib"
   },
   "devDependencies": {
-    "@times-visuals/babel-configuration": "1.0.1"
+    "@times-visuals/babel-configuration": "^1.0.2"
   }
 }

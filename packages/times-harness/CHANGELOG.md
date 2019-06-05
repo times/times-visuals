@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/times/times-visuals/compare/@times-visuals/times-harness@1.0.4...@times-visuals/times-harness@1.1.0) (2019-06-05)
+
+
+### Features
+
+* Expose babel config from times-harness ([6693beb](https://github.com/times/times-visuals/commit/6693beb))
+
+
+
+
+
 ## [1.0.4](https://github.com/times/times-visuals/compare/@times-visuals/times-harness@1.0.3...@times-visuals/times-harness@1.0.4) (2019-06-05)
 
 

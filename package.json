@@ -6,6 +6,13 @@
   "author": "Chris Hutchinson <chris.hutchinson@thetimes.co.uk>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "build": "lerna run build --stream",
+    "publish-all": "sh ./scripts/publish.sh",
+    "test": "lerna run test --stream"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
@@ -19,8 +26,6 @@
     "css-loader": "^1.0.1",
     "file-loader": "^2.0.0",
     "lerna": "^3.2.1",
-    "node-sass": "^4.10.0",
-    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1"
   },
   "workspaces": {
@@ -31,9 +36,5 @@
   "dependencies": {
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
-  },
-  "scripts": {
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
   }
 }

@@ -2,10 +2,21 @@
   "name": "@times-visuals/script-loader",
   "version": "1.0.0",
   "description": "Simple React component for loading a script before rendering it's children",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "dev": "src/index.js",
   "author": "Chris Hutchinson <chris.hutchinson@thetimes.co.uk>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib"
+  },
   "dependencies": {
     "react": "^16.6.3"
+  },
+  "devDependencies": {
+    "@times-visuals/babel-configuration": "^1.0.0"
   }
 }

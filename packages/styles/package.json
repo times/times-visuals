@@ -1,7 +1,17 @@
 {
   "name": "@times-visuals/styles",
   "version": "1.0.0",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
   "dev": "src/index.js",
-  "main": "dist/index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib"
+  },
+  "devDependencies": {
+    "@times-visuals/babel-configuration": "^1.0.0"
+  }
 }

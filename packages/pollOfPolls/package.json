@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/poll-of-polls",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Poll of polls template",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -25,6 +25,6 @@
     "styled-components": "^4.2.1"
   },
   "devDependencies": {
-    "@times-visuals/babel-configuration": "^1.0.0"
+    "@times-visuals/babel-configuration": "1.0.1"
   }
 }

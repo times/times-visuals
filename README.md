@@ -28,7 +28,7 @@ $ yarn storybook
 To add a new package:
 
 1. Create a new folder in the `./packages` directory
-2. Copy the contents of `./packages/template` to your new folder
+2. Copy the contents of `./template` to your new folder
 3. Update the `name` and your `description` in the `package.json` file, and the
    package details in your `README.md`
 4. Update your `./stories/index.stories.js` file with the details for your new

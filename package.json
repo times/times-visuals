@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -o docs",
     "build": "lerna run build --stream",
     "publish-all": "sh ./scripts/publish.sh",
     "test": "lerna run test --stream"

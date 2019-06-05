@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/canvas-video",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A React component for rendering a spritesheet as a video using canvas",
   "main": "lib/index.js",
   "module": "lib/index.js",

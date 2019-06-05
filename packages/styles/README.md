@@ -19,7 +19,11 @@ $ npm add @times-visuals/styles
 ```js
 import { colors } from "@times-visuals/styles";
 
-console.log(colors.blue); // { r: 37, g: 66, b: 81 }
+// Core digital colour palette
+console.log(colors.digital);
+
+// UK Political Parties
+console.log(colors.ukPoliticalParties);
 ```
 
 ### Breakpoints

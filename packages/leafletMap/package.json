@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/leaflet-map",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Template for creating leaflet maps",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -19,6 +19,6 @@
     "react-leaflet": "^2.1.2"
   },
   "devDependencies": {
-    "@times-visuals/babel-configuration": "^1.0.0"
+    "@times-visuals/babel-configuration": "1.0.1"
   }
 }

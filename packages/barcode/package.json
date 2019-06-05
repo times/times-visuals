@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/barcode",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Barcode-style chart",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -25,7 +25,7 @@
     "styled-components": "^4.2.1"
   },
   "devDependencies": {
-    "@times-visuals/babel-configuration": "^1.0.0",
-    "@times-visuals/styles": "^1.0.0"
+    "@times-visuals/babel-configuration": "1.0.1",
+    "@times-visuals/styles": "1.0.1"
   }
 }

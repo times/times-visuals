@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/postcode-search",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Postcode search boilerplate code",
   "main": "src/index.js",
   "author": "Basile Simon <basile.simon@thetimes.co.uk>",

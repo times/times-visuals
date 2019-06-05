@@ -4407,21 +4407,6 @@ d3-jetpack@^2.0.19:
     d3-timer "1"
     d3-transition "1"
 
-d3-jetpack@^2.0.20:
-  version "2.0.20"
-  resolved "https://registry.yarnpkg.com/d3-jetpack/-/d3-jetpack-2.0.20.tgz#421304ec91a5de01c5d6e1fb8f84f5eba2fbdfb3"
-  integrity sha512-YztfbI0uJQrxP5PW/ncqEwD7P9+QqN3E4qRocIoBITlX9jI5D+ryQ0Hhm9byL9MJebvzW9/djEuN2K1tIg4Fdg==
-  dependencies:
-    d3-array "1"
-    d3-axis "1"
-    d3-collection "1"
-    d3-queue "3"
-    d3-request "1"
-    d3-scale "1"
-    d3-selection "1"
-    d3-timer "1"
-    d3-transition "1"
-
 d3-path@1:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.7.tgz#8de7cd693a75ac0b5480d3abaccd94793e58aae8"
@@ -4476,11 +4461,6 @@ d3-selection@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/d3-selection/-/d3-selection-1.0.2.tgz#ae662afd4702ac9c5da039b2107a1764fa1c9070"
   integrity sha1-rmYq/UcCrJxdoDmyEHoXZPockHA=
-
-d3-selection@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/d3-selection/-/d3-selection-1.4.0.tgz#ab9ac1e664cf967ebf1b479cc07e28ce9908c474"
-  integrity sha512-EYVwBxQGEjLCKF2pJ4+yrErskDnz5v403qvAid96cNdCMr8rmCYfY5RGzWz24mdIbxmDf6/4EAH+K9xperD5jg==
 
 d3-shape@1.0.4:
   version "1.0.4"

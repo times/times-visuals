@@ -1,10 +1,17 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
-import { parties, polls, averages } from "./fixtures";
 import PollOfPolls from "../src";
+import Readme from "../README.md";
+
+import { parties, polls, averages } from "./fixtures";
 
 storiesOf("Projects/PollOfPolls", module)
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
   .add("default", () => (
     <PollOfPolls parties={parties} data={polls} averages={averages} />
   ))

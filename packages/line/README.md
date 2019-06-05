@@ -1,6 +1,6 @@
 # Line chart
 
-> This is the description for the component
+> A line chart with various styling options, and annotation support
 
 ## Installation
 
@@ -16,14 +16,15 @@ $ npm add @times-visuals/line
 
 Required parameters:
 
-* `data`: an array of objects containing at least two key/value pairs (one for the x axis, one for the y axis)
-* `yDomain`: an array of two integers we'll use to set the domain of the y axis
+- `data`: an array of objects containing at least two key/value pairs (one for
+  the x axis, one for the y axis)
+- `yDomain`: an array of two integers we'll use to set the domain of the y axis
 
-```js
+```jsx
 import Line from '@times-visuals/line';
 
 // simplest version
-export default () => <Line data={data} yDomain={[0,100]}/>;
+export default () => <Line data={data} yDomain={[0,100]} />;
 
 // area chart with a custom curve
 export default () => <Line data={data} curve='curveBasis' area={true} yDomain={[0, 100]} />;
@@ -31,7 +32,7 @@ export default () => <Line data={data} curve='curveBasis' area={true} yDomain={[
 // area chart with y axis formatted as percentages
 export default () => <Line
       data={data}
-      curve={'curveBasis'}
+      curve='curveBasis'
       area={true}
       percentage={true}
       yDomain={[0, 100]}
@@ -39,23 +40,23 @@ export default () => <Line
 
 // the above, with an annotation (see section below)
 export default () => <Line
-      data={data}
-      curve={'curveBasis'}
-      area={true}
-      percentage={true}
-      yDomain={[0, 100]}
-      annotation={annotation}
-    />;
+  data={data}
+  curve='curveBasis'
+  area={true}
+  percentage={true}
+  yDomain={[0, 100]}
+  annotation={annotation}
+/>;
 ```
 
 Annotations must be of this format:
 
 ```js
 const annotation = {
-  title: 'this is an annotation',
-  x: new Date('2018-06-01'),
+  title: "this is an annotation",
+  x: new Date("2018-06-01"),
   y: 50,
   dx: 20,
-  dy: -30,
+  dy: -30
 };
 ```

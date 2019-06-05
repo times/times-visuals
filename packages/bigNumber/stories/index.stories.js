@@ -2,8 +2,14 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import BigNumber from "../src";
+import Readme from "../README.md";
 
 storiesOf("Elements/Big Number", module)
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
   .add("default", () => <BigNumber number={23} label="This is a label" />)
   .add("without a label", () => <BigNumber number={23} />)
   .add("with a custom colour", () => (

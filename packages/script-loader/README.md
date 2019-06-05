@@ -1,6 +1,6 @@
-# [Times Visuals] Script Loader
+# Script Loader
 
-> Simple React component for loading a script before rendering it's children
+> Simple React component for loading a script before rendering its children
 
 ## Installation
 

@@ -1,4 +1,4 @@
-# [Times Visuals] Web Component Harness
+# Web Component Harness
 
 > Harness for loading a React component as a web component
 

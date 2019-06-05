@@ -1,6 +1,6 @@
 # Hemicycle
 
-> This is the description for the component
+> A hemicycle shaped D3 chart
 
 ## Installation
 
@@ -14,20 +14,20 @@ $ npm add @times-visuals/hemicycle
 
 ## Usage
 
-Takes a data object in the following format:
+Takes a data array in the following format:
 
-[{
-id: "upa",
-name: "UPA",
-seats: 66,
-color: #00BFFF,
-longName: "United Progressive Alliance"
-}]
+```jsx
+import Hemicycle from "@times-visuals/hemicycle";
 
-```js
-import Hemicycle from '@times-visuals/hemicycle';
+const data = [
+  {
+    id: "upa",
+    name: "UPA",
+    seats: 66,
+    color: "#00BFFF",
+    longName: "United Progressive Alliance"
+  }
+];
 
-export default () => <Hemicycle data={data}/>;
-
-export default () => <Hemicycle data={data} showLegend={true}/>;
+export default () => <Hemicycle data={data} showLegend={true} />;
 ```

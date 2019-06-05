@@ -1,13 +1,16 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { data } from "./fixtures";
 
 import Hemicycle from "../src";
+import Readme from "../README.md";
 
-storiesOf("Charts/Hemicycle", module).add("default", () => (
-  <Hemicycle data={data} />
-));
+import { data } from "./fixtures";
 
-storiesOf("Charts/Hemicycle", module).add("with legend", () => (
-  <Hemicycle data={data} showLegend={true} />
-));
+storiesOf("Charts/Hemicycle", module)
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
+  .add("default", () => <Hemicycle data={data} />)
+  .add("with legend", () => <Hemicycle data={data} showLegend={true} />);

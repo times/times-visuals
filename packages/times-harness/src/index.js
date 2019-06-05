@@ -21,6 +21,14 @@ module.exports = (
     libraryTarget: "umd"
   },
 
+  externals:
+    mode === "production"
+      ? {
+          react: "React",
+          "react-dom": "ReactDOM"
+        }
+      : {},
+
   mode,
 
   module: {

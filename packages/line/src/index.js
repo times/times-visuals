@@ -1,22 +1,21 @@
 // Libraries
-import React from 'react';
+import React from "react";
+import * as selection from "d3-selection";
+import * as jetpack from "d3-jetpack";
+import * as scale from "d3-scale";
+import * as array from "d3-array";
+import * as axis from "d3-axis";
+import * as shape from "d3-shape";
+import * as timeFormat from "d3-time-format";
+import * as time from "d3-time";
+import * as transition from "d3-transition";
+import * as ease from "d3-ease";
+import * as format from "d3-format";
+import * as interpolate from "d3-interpolate";
+import * as annotation from "d3-svg-annotation";
 
-// Styles
-import style from './style.scss';
+import { LineContainer } from "./style";
 
-import * as selection from 'd3-selection';
-import * as jetpack from 'd3-jetpack';
-import * as scale from 'd3-scale';
-import * as array from 'd3-array';
-import * as axis from 'd3-axis';
-import * as shape from 'd3-shape';
-import * as timeFormat from 'd3-time-format';
-import * as time from 'd3-time';
-import * as transition from 'd3-transition';
-import * as ease from 'd3-ease';
-import * as format from 'd3-format';
-import * as interpolate from 'd3-interpolate';
-import * as annotation from 'd3-svg-annotation';
 const d3 = {
   ...selection,
   ...jetpack,
@@ -30,12 +29,12 @@ const d3 = {
   ...ease,
   ...format,
   ...interpolate,
-  ...annotation,
+  ...annotation
 };
 
 export class Line extends React.Component {
   drawChart(node) {
-    node.innerHTML = '';
+    node.innerHTML = "";
     const { width } = node.getBoundingClientRect();
     let height = width < 450 ? 200 : 400;
 
@@ -45,7 +44,7 @@ export class Line extends React.Component {
         top: 50,
         right: 50,
         left: 50,
-        bottom: 50,
+        bottom: 50
       },
       line: d3.line(),
       area: d3.area(),
@@ -55,7 +54,7 @@ export class Line extends React.Component {
       yDomain: this.props.yDomain,
       lines: this.props.lines,
       xTicks: 4,
-      yTicks: 4,
+      yTicks: 4
     };
     config.usableWidth = width - config.margin.left - config.margin.right;
     config.usableHeight = height - config.margin.top - config.margin.bottom;
@@ -83,35 +82,33 @@ export class Line extends React.Component {
       .scale(config.yScale)
       .ticks(config.yTickAmount);
     if (this.props.percentage) {
-      yAxis.tickFormat((d, i, n) => (n[i + 1] ? d : d + '%'));
+      yAxis.tickFormat((d, i, n) => (n[i + 1] ? d : d + "%"));
     }
 
     //defining svg
     const svg = d3
       .select(node)
-      .append('svg')
+      .append("svg")
       .at({
         width: width,
-        height: height,
+        height: height
       });
 
     //Defining a group element for line chart
-    const g = svg.append('g');
+    const g = svg.append("g");
     g.translate([config.margin.left, config.margin.top]);
 
     //Create axes
-    g
-      .append('g')
+    g.append("g")
       .at({
-        class: [style.axis, style.xAxis].join(' '),
+        class: ["axis", "xAxis"].join(" ")
       })
       .translate([0, config.usableHeight])
       .call(xAxis);
 
-    g
-      .append('g')
+    g.append("g")
       .at({
-        class: [style.axis, style.yAxis].join(' '),
+        class: ["axis", "yAxis"].join(" ")
       })
       .translate([0, 0])
       .call(yAxis);
@@ -123,21 +120,21 @@ export class Line extends React.Component {
       .curve(this.props.curve ? d3.curveBasis : d3.curveLinear);
 
     const lines = g
-      .selectAll('.line')
+      .selectAll(".line")
       .data([config.dataset])
       .enter()
-      .append('g')
+      .append("g")
       .at({
-        class: style.line,
+        class: "line"
       });
 
     lines
-      .append('path')
+      .append("path")
       .at({
-        d: line,
+        d: line
       })
       .st({
-        stroke: '#254251',
+        stroke: "#254251"
       });
 
     //Draw area/s
@@ -148,12 +145,11 @@ export class Line extends React.Component {
         .y0(() => config.yScale.range()[0])
         .curve(this.props.curve ? d3.curveBasis : d3.curveLinear);
 
-      g
-        .selectAll('.area')
+      g.selectAll(".area")
         .data([config.dataset])
         .enter()
-        .append('path')
-        .at({ class: style.area, d: area, fill: '#254151' });
+        .append("path")
+        .at({ class: "area", d: area, fill: "#254151" });
     }
 
     if (this.props.annotation) {
@@ -162,14 +158,14 @@ export class Line extends React.Component {
           type: annotation.annotationLabel,
           note: {
             title: this.props.annotation.title,
-            label: '',
-            wrap: 50,
+            label: "",
+            wrap: 50
           },
           x: config.xScale(this.props.annotation.x),
           y: config.yScale(this.props.annotation.y),
           dx: this.props.annotation.dx,
-          dy: this.props.annotation.dy,
-        },
+          dy: this.props.annotation.dy
+        }
       ];
 
       const makeAnnotation = annotation
@@ -177,9 +173,8 @@ export class Line extends React.Component {
         .type(annotation.annotationLabel)
         .annotations(importAnnotation);
 
-      g
-        .append('g')
-        .at({ class: style.annotation })
+      g.append("g")
+        .at({ class: "annotation" })
         .call(makeAnnotation);
     }
   }
@@ -194,9 +189,9 @@ export class Line extends React.Component {
 
   render() {
     return (
-      <div className={style.Container}>
+      <LineContainer>
         <div ref={node => (this.chart = node)} />
-      </div>
+      </LineContainer>
     );
   }
 }

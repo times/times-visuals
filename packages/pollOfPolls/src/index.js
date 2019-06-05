@@ -1,9 +1,8 @@
 // Libraries
 import React from "react";
-import { drawChart, generatePolls, generateAverages } from "./chart";
 
-// Styles
-import style from "./style.scss";
+import { PollOfPollsContainer } from "./style";
+import { drawChart, generatePolls, generateAverages } from "./chart";
 
 export class PollOfPolls extends React.Component {
   state = { polls: null, averages: null, latestAverages: null };
@@ -28,26 +27,24 @@ export class PollOfPolls extends React.Component {
   render() {
     const { parties, dataSource } = this.props;
     return (
-      <div className={style.Container}>
+      <PollOfPollsContainer>
         <div ref={node => (this.chart = node)} />
-        {parties ? (
-          <div className={style.labelsContainer}>
+
+        {parties && (
+          <ul>
             {parties.map((e, key) => (
-              <div className={[style.label, style.text].join(" ")} key={key}>
-                <div className={style.circle} style={{ background: e.color }} />
-                <div
-                  className={[style.number, style[e.name]].join(" ")}
-                  key={key}
-                >
-                  {e.latest}%
-                </div>
+              <li key={key}>
+                <i style={{ "background-color": e.color }} />
+
+                <label key={key}>{e.latest}%</label>
                 {e.long_name ? e.long_name : e.name}
-              </div>
+              </li>
             ))}
-          </div>
-        ) : null}
-        {dataSource && <p className={style.source}>Source: {dataSource}</p>}
-      </div>
+          </ul>
+        )}
+
+        {dataSource && <caption>Source: {dataSource}</caption>}
+      </PollOfPollsContainer>
     );
   }
 }

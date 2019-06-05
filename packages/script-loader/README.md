@@ -19,7 +19,9 @@ import ScriptLoader from "@times-visuals/script-loader";
 
 export default () => (
   <ScriptLoader src="url/to/script">
-    <div>Hello, world! This renders once the `src` script has loaded</div>
+    {() => (
+      <div>Hello, world! This renders once the `src` script has loaded</div>
+    )}
   </ScriptLoader>
 );
 ```

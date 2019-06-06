@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/hemicycle",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Hemicycle template to visualise some parliaments around the world",
   "main": "lib/index.js",
   "module": "lib/index.js",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/times/times-visuals/compare/@times-visuals/times-harness@1.1.0...@times-visuals/times-harness@1.2.0) (2019-06-06)
+
+
+### Features
+
+* Addon for a README tab, and update all package readmes ([6c57994](https://github.com/times/times-visuals/commit/6c57994))
+
+
+
+
+
 # [1.1.0](https://github.com/times/times-visuals/compare/@times-visuals/times-harness@1.0.4...@times-visuals/times-harness@1.1.0) (2019-06-05)
 
 

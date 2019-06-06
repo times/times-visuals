@@ -1,7 +1,7 @@
 {
   "name": "@times-visuals/poll-of-polls",
   "version": "1.0.3",
-  "description": "Poll of polls template",
+  "description": "Poll of polls component",
   "main": "lib/index.js",
   "module": "lib/index.js",
   "dev": "src/index.js",

@@ -1,21 +1,21 @@
-# Big number BigNumber
+# Big number
 
-> This is the description for the component
+> A big number with optional incrementing animation
 
 ## Installation
 
 ```bash
 # Yarn
-$ yarn add @times-visuals/bigNumber
+$ yarn add @times-visuals/big-number
 
 # npm
-$ npm add @times-visuals/bigNumber
+$ npm add @times-visuals/big-number
 ```
 
 ## Usage
 
-```js
-import BigNumber from '@times-visuals/bigNumber';
+```jsx
+import BigNumber from "@times-visuals/big-number";
 
-export default () => <BigNumber />;
+export default () => <BigNumber number={23} label="This is a label" />;
 ```

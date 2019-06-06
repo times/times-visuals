@@ -2,7 +2,9 @@ import React from "react";
 
 import { storiesOf } from "@storybook/react";
 
-import { colors } from "../src";
+import { colors, breakpoints } from "../src";
+
+import Readme from "../README.md";
 
 const rgbToHex = (r, g, b) =>
   "#" + [r, g, b].map(x => x.toString(16).padStart(2, "0")).join("");
@@ -63,7 +65,28 @@ const ColorGrid = ({ grid }) => (
 );
 
 storiesOf("Styles/Colors", module)
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
   .add("Digital", () => <ColorGrid grid={colors.digital} />)
   .add("UK Political Parties", () => (
     <ColorGrid grid={colors.ukPoliticalParties} />
+  ));
+
+storiesOf("Styles", module)
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
+  .add("Breakpoints", () => (
+    <ul>
+      {Object.keys(breakpoints).map(key => (
+        <li key={key}>
+          <strong>{key}:</strong> {breakpoints[key]}
+        </li>
+      ))}
+    </ul>
   ));

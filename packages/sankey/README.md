@@ -1,6 +1,6 @@
 # Sankey
 
-> This is the description for the component
+> A Sankey template using D3.js
 
 ## Installation
 
@@ -16,8 +16,9 @@ $ npm add @times-visuals/sankey
 
 Required parameters:
 
-```js
 Data structure:
+
+```js
 
 {
 "nodes": [

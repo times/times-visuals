@@ -1,5 +1,5 @@
 import React from "react";
-
+import { d3sankey } from "./sankey";
 import { drawChart } from "./chart";
 
 import { SankeyContainer } from "./style";
@@ -7,7 +7,7 @@ import { SankeyContainer } from "./style";
 export class Sankey extends React.Component {
   componentDidMount() {
     const { data, onHover } = this.props;
-    drawChart(this.chart, data, onHover);
+    drawChart(this.chart, data, d3sankey, onHover);
   }
 
   render() {

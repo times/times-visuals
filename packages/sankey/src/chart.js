@@ -49,13 +49,10 @@ export const drawChart = (chartNode, data, d3sankey, onHover) => {
   };
 
   // set the width and height of the svg
-  const svg = d3
-    .select(chartNode)
-    .append("svg")
-    .at({
-      width: config.width,
-      height: config.height
-    });
+  const svg = d3.select(chartNode).at({
+    width: config.width,
+    height: config.height
+  });
 
   const g = svg.append("g").at({
     transform: `translate(${config.margin.left},${config.margin.top})`,

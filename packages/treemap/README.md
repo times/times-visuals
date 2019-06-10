@@ -35,7 +35,7 @@ export default () => <Treemap data={data} onHover={function} />;
         ...
       ],
       color: "#254251",
-      font_color: "#ffffff"
+      fontColor: "#ffffff"
     },
 ```
 

@@ -1,23 +1,21 @@
-import React from 'react';
+import React from "react";
+import { drawChart } from "./chart";
 
-export default () => (
-  <main>
-    <ul>
-      <li>
-        <a href="https://www.thetimes.co.uk/article/budget-2017-stamp-duty-cut-for-first-time-buyers-ms9tsstfw">
-          Last seen around Nov 2017
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/times/times-treemap/tree/feature/budget2017">
-          Code for it in old generator worlb
-        </a>
-      </li>
-      <li>
-        <a href="https://times.github.io/dataviz-catalogue/treemap/">
-          and represented in the Catalogue
-        </a>
-      </li>
-    </ul>
-  </main>
-);
+import { TreemapContainer } from "./style";
+
+export class Treemap extends React.Component {
+  componentDidMount() {
+    const { data, onHover } = this.props;
+    drawChart(this.chart, data, onHover);
+  }
+
+  render() {
+    return (
+      <TreemapContainer>
+        <div ref={node => (this.chart = node)} />
+      </TreemapContainer>
+    );
+  }
+}
+
+export default Treemap;

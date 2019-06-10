@@ -1,6 +1,6 @@
-# Treemap Treemap
+# Treemap
 
-> This is the description for the component
+> A treemap chart built in d3
 
 ## Installation
 
@@ -15,7 +15,27 @@ $ npm add @times-visuals/treemap
 ## Usage
 
 ```js
-import Treemap from '@times-visuals/treemap;
+import Treemap from '@times-visuals/treemap';
 
-export default () => <Treemap />;
+export default () => <Treemap data={data} onHover={function}/>;
+```
+
+## Data format
+
+```js
+   [
+    {
+      category: "HouseOfCommons",
+      children: [
+        {
+          category: "Commons staff",
+          number: "7194",
+          id: "commons"
+        },
+        ...
+      ],
+      id: "HouseOfCommons",
+      color: "#254251",
+      font_color: "#ffffff"
+    },
 ```

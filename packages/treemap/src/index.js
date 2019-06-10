@@ -12,7 +12,7 @@ export class Treemap extends React.Component {
   render() {
     return (
       <TreemapContainer>
-        <div ref={node => (this.chart = node)} />
+        <svg ref={node => (this.chart = node)} />
       </TreemapContainer>
     );
   }

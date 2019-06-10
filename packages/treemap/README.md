@@ -17,7 +17,7 @@ $ npm add @times-visuals/treemap
 ```js
 import Treemap from '@times-visuals/treemap';
 
-export default () => <Treemap data={data} onHover={function}/>;
+export default () => <Treemap data={data} onHover={function} />;
 ```
 
 ## Data format
@@ -25,7 +25,7 @@ export default () => <Treemap data={data} onHover={function}/>;
 ```js
    [
     {
-      category: "HouseOfCommons",
+      id: "HouseOfCommons",
       children: [
         {
           category: "Commons staff",
@@ -34,8 +34,25 @@ export default () => <Treemap data={data} onHover={function}/>;
         },
         ...
       ],
-      id: "HouseOfCommons",
       color: "#254251",
       font_color: "#ffffff"
     },
+```
+
+## On hover return
+
+If an onHover function is added, it will get passed an object in the following structure:
+
+```js
+{
+    data: Object of the square,
+    depth: 2,
+    height: 2,
+    parent: Object of the parent,
+    value: value of the square,
+    x0: xx,
+    x1: xx,
+    y0: yy,
+    y1: yy
+}
 ```

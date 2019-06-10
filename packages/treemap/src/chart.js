@@ -11,26 +11,24 @@ const d3 = {
 // function for wrapping text inside the treemap "routes"
 const wrap = text => {
   text.each(function() {
-    var text = d3.select(this),
-      words = text
-        .text()
-        .split(/\s+/)
-        .reverse(),
-      word,
+    let text = d3.select(this),
+      words = text.text().split(/\s+/),
       line = [],
       lineNumber = 0,
       lineHeight = 1.1, // ems
-      y = text.attr("y"),
-      dy = parseFloat(text.attr("dy")),
+      y = text.at("y"),
+      dy = parseFloat(text.at("dy")),
       tspan = text
         .text(null)
         .append("tspan")
-        .attr("x", 8)
-        .attr("y", y)
-        .attr("dy", dy + "em");
-    var d = text.data()[0];
-    var width = d.x1 - d.x0 - 16;
-    while ((word = words.pop())) {
+        .at({
+          x: 8,
+          y: y,
+          dy: dy + "em"
+        });
+    const d = text.data()[0];
+    const width = d.x1 - d.x0 - 16;
+    words.forEach(word => {
       line.push(word);
       tspan.text(line.join(" "));
       if (tspan.node().getComputedTextLength() > width) {
@@ -39,12 +37,14 @@ const wrap = text => {
         line = [word];
         tspan = text
           .append("tspan")
-          .attr("x", 8)
-          .attr("y", y)
-          .attr("dy", ++lineNumber * lineHeight + dy + "em")
+          .at({
+            x: 8,
+            y: y,
+            dy: ++lineNumber * lineHeight + dy + "em"
+          })
           .text(word);
       }
-    }
+    });
   });
 };
 
@@ -71,13 +71,10 @@ export const drawChart = (chartNode, data, onHover) => {
     }
   };
 
-  const svg = d3
-    .select(chartNode)
-    .append("svg")
-    .at({
-      width: config.width,
-      height: config.height
-    });
+  const svg = d3.select(chartNode).at({
+    width: config.width,
+    height: config.height
+  });
 
   const g = svg.append("g").at({
     transform: `translate(${config.margin.left},${config.margin.top})`,
@@ -85,7 +82,7 @@ export const drawChart = (chartNode, data, onHover) => {
     height: config.usableHeight
   });
 
-  const sumBySize = data => data.number;
+  const sumBySize = data => data.value;
 
   const treemap = d3
     .treemap()
@@ -124,7 +121,7 @@ export const drawChart = (chartNode, data, onHover) => {
       fill: d => d.parent.data.color
     })
     .on("mouseover", d => {
-      onHover(d);
+      return onHover ? onHover(d) : null;
     });
 
   // labels
@@ -140,7 +137,7 @@ export const drawChart = (chartNode, data, onHover) => {
     })
     .st({
       fill: d => {
-        return d.parent.data.font_color ? d.parent.data.font_color : "#000000";
+        return d.parent.data.fontColor ? d.parent.data.fontColor : "#000000";
       }
     })
     .text(function(d) {

@@ -5,6 +5,9 @@
   "main": "src/index.js",
   "author": "Daniel Clark <daniel.clark@the-times.co.uk>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "d3-array": "^2.2.0",
     "d3-collection": "^1.0.7",

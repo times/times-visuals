@@ -14,8 +14,6 @@ $ npm add @times-visuals/sankey
 
 ## Usage
 
-Required parameters:
-
 Data structure:
 
 ```js
@@ -34,5 +32,5 @@ Data structure:
 ```js
 import Sankey from '@times-visuals/sankey';
 
-export default () => <Sankey data={data} onHover={function}/>;
+export default () => <Sankey data={data} onHover={function} />;
 ```

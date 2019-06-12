@@ -1,4 +1,4 @@
-# [Times Visuals] Barcode chart
+# Barcode chart
 
 > Renders a barcode chart
 
@@ -14,7 +14,7 @@ $ npm add @times-visuals/barcode
 
 ## Usage
 
-```js
+```jsx
 import Barcode from "@times-visuals/barcode";
 
 const data = [
@@ -37,7 +37,7 @@ export default () => <Barcode data={data} valueField="fieldName" />;
 
 You can optionally pass a configuration option with a colour too:
 
-```js
+```jsx
 import { colors } from "@times-stories/styles";
 
 export default () => (

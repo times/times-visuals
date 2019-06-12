@@ -2,6 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import LeafletMap from "../src";
+import Readme from "../README.md";
 
 const stamenTonerTileset = {
   url:
@@ -12,6 +13,11 @@ const stamenTonerTileset = {
 };
 
 storiesOf("Elements/Leaflet Map", module)
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
   .add("default", () => <LeafletMap />)
   .add("Center on a point", () => (
     <LeafletMap position={[52.518391, 13.403617]} zoom={10} />

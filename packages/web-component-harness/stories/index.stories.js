@@ -3,6 +3,7 @@ import { storiesOf } from "@storybook/react";
 import ScriptLoader from "@times-visuals/script-loader";
 
 import webComponentHarness from "../src";
+import Readme from "../README.md";
 
 const Demo = ({ greeting = "Hello", forename = "world" }) => (
   <div>
@@ -11,6 +12,11 @@ const Demo = ({ greeting = "Hello", forename = "world" }) => (
 );
 
 storiesOf("Helpers/Web Component Harness", module)
+  .addParameters({
+    readme: {
+      sidebar: Readme
+    }
+  })
   .addDecorator(story => (
     <ScriptLoader src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/webcomponents-lite.min.js">
       {story}

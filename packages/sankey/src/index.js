@@ -13,7 +13,7 @@ export class Sankey extends React.Component {
   render() {
     return (
       <SankeyContainer>
-        <div ref={node => (this.chart = node)} />
+        <svg ref={node => (this.chart = node)} />
       </SankeyContainer>
     );
   }

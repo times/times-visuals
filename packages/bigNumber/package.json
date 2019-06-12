@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/big-number",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Template for creating big numbers",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -14,7 +14,7 @@
     "build": "babel src --out-dir lib"
   },
   "dependencies": {
-    "@times-visuals/styles": "^1.0.3",
+    "@times-visuals/styles": "1.1.0",
     "react": "^16.6.3",
     "react-countup": "^4.0.0",
     "styled-components": "^4.2.1"

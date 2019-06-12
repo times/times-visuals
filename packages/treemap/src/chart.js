@@ -115,13 +115,26 @@ export const drawChart = (chartNode, data, onHover) => {
     .at({
       id: d => d.data.id,
       // if the square is a certain size give it a class of 'wide' - which is used later deciding which cells to show text on
-      class: d => (d.x1 - d.x0 > 70 && d.y1 - d.y0 > 75 ? "wide" : null),
+      class: d => (d.x1 - d.x0 > 70 && d.y1 - d.y0 > 75 ? "rect wide" : "rect"),
       width: d => d.x1 - d.x0,
       height: d => d.y1 - d.y0,
       fill: d => d.parent.data.color
     })
-    .on("mouseover", d => {
-      return onHover ? onHover(d) : null;
+    .on("mouseover", function(d) {
+      if (onHover) {
+        onHover(d);
+        d3.selectAll(".rect").st({
+          opacity: 0.5
+        });
+        d3.select(this).st({ opacity: 1 });
+      }
+    })
+    .on("mouseout", () => {
+      if (onHover) {
+        d3.selectAll(".rect").st({
+          opacity: 1
+        });
+      }
     });
 
   // labels

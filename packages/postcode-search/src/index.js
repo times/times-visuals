@@ -96,7 +96,7 @@ class PostcodeSearch extends React.Component {
         </form>
 
         {loadingState === "error" && (
-          <Message type="error">
+          <Message>
             Sorry, there was an error looking up your postcode, please try again
           </Message>
         )}

@@ -63,7 +63,7 @@ export const Container = styled.div`
 
 export const Message = styled.p`
   text-align: center;
-  color: ${props => (props.type === "error" ? "#cc0000" : "#333")};
+  color: #cc0000;
   display: block;
   margin: 0.5rem auto;
 `;

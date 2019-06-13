@@ -11,7 +11,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "build": "babel src --out-dir lib --ignore **/__tests__",
     "test": "jest --coverage"
   },
   "private": true,

@@ -27,7 +27,8 @@
   "dependencies": {
     "@times-visuals/styles": "^1.0.0",
     "react": "^16.6.3",
-    "styled-components": "^4.2.1"
+    "styled-components": "^4.2.1",
+    "whatwg-fetch": "^3.0.0"
   },
   "jest": {
     "setupFiles": [

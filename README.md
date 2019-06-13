@@ -42,3 +42,17 @@ Often you may wish to depend on another package in the repo (e.g.
 `@times-visuals/styles`). To do this, manually add it to the `package.json` of
 your new component, and run `yarn` from the project root to link everything
 together.
+
+## Tests
+
+For those components with test suites, you can run them using:
+
+```bash
+$ yarn test
+```
+
+If you need to update the Jest snapshots, run:
+
+```bash
+$ yarn test:update-snapshots
+```

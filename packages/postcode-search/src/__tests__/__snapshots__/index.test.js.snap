@@ -20,7 +20,7 @@ exports[`<PostcodeSearch /> should render correctly 1`] = `
   border: 1px solid #dbdbdb;
   font-size: 1.6rem;
   line-height: 1.8rem;
-  padding: 0.8rem 0.9rem 0.8rem;
+  padding: 0.8rem 0.9rem;
   text-transform: uppercase;
 }
 
@@ -52,13 +52,12 @@ exports[`<PostcodeSearch /> should render correctly 1`] = `
   background: #046798;
   box-shadow: none;
   -webkit-appearance: none;
+  border: 0;
 }
 
 .c0 input[type="submit"]:hover,
 .c0 input[type="submit"]:focus {
-  background: darken(#046798,15%);
-  border: 0;
-  box-shadow: none;
+  background: #004e7f;
 }
 
 .c0 input[type="submit"]:disabled {
@@ -66,18 +65,8 @@ exports[`<PostcodeSearch /> should render correctly 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c0 input[type="search"] {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-@media screen and (min-width:768px) {
   .c0 input[type="submit"] {
-    margin: 1rem 0;
     font-size: 1.6rem;
-    margin-top: 0;
-    margin-bottom: 0;
   }
 }
 

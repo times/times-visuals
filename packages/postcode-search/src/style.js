@@ -15,16 +15,11 @@ export const Container = styled.div`
     border: 1px solid #dbdbdb;
     font-size: 1.6rem;
     line-height: 1.8rem;
-    padding: 0.8rem 0.9rem 0.8rem;
+    padding: 0.8rem 0.9rem;
     text-transform: uppercase;
 
     &::placeholder {
       text-transform: none;
-    }
-
-    @media screen and (min-width: ${breakpoints.mobile}) {
-      margin-top: 0;
-      margin-bottom: 0;
     }
   }
 
@@ -40,12 +35,11 @@ export const Container = styled.div`
     background: #046798;
     box-shadow: none;
     -webkit-appearance: none;
+    border: 0;
 
     &:hover,
     &:focus {
-      background: darken(#046798, 15%);
-      border: 0;
-      box-shadow: none;
+      background: #004e7f;
     }
 
     &:disabled {
@@ -53,10 +47,7 @@ export const Container = styled.div`
     }
 
     @media screen and (min-width: ${breakpoints.mobile}) {
-      margin: 1rem 0;
       font-size: 1.6rem;
-      margin-top: 0;
-      margin-bottom: 0;
     }
   }
 `;

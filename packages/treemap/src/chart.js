@@ -1,11 +1,13 @@
 import * as selection from "d3-selection";
 import * as scale from "d3-scale";
 import * as hierarchy from "d3-hierarchy";
+import * as jetpack from "d3-jetpack";
 
 const d3 = {
   ...selection,
   ...scale,
-  ...hierarchy
+  ...hierarchy,
+  ...jetpack
 };
 
 // function for wrapping text inside the treemap "routes"

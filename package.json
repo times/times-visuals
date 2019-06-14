@@ -4,7 +4,7 @@
   "description": "A suite of libraries and components for visuals and graphics at The Times and The Sunday Times",
   "main": "index.js",
   "author": "Chris Hutchinson <chris.hutchinson@thetimes.co.uk>",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "private": true,
   "scripts": {
     "storybook": "start-storybook -p 6006",

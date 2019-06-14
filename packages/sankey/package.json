@@ -6,7 +6,7 @@
   "module": "lib/index.js",
   "dev": "src/index.js",
   "author": "Daniel Clark <daniel.clark@the-times.co.uk>",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "publishConfig": {
     "access": "public"
   },

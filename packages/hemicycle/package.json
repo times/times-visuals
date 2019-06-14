@@ -6,7 +6,7 @@
   "module": "lib/index.js",
   "dev": "src/index.js",
   "author": "Basle Simon <basile.simon@thetimes.co.uk>",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "publishConfig": {
     "access": "public"
   },

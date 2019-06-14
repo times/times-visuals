@@ -4,7 +4,7 @@
   "description": "Bar chart template",
   "main": "src/index.js",
   "author": "Basile Simon <basile.simon@thetimes.co.uk>",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "private": true,
   "dependencies": {
     "react": "^16.6.3"

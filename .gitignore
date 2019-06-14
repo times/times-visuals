@@ -6,3 +6,4 @@ node_modules
 
 # Library-specific
 packages/*/lib
+packages/*/coverage

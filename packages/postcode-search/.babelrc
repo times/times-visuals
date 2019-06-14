@@ -1,0 +1,8 @@
+{
+  "extends": "@times-visuals/babel-configuration",
+  "env": {
+    "test": {
+      "plugins": ["@babel/plugin-transform-runtime"]
+    }
+  }
+}

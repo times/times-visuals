@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/babel-configuration",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "The Babel config for packages in times-visuals",
   "main": ".babelrc",
   "author": "Chris Hutchinson <chris.hutchinson@thetimes.co.uk>",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/times/times-visuals/compare/@times-visuals/sankey@1.1.3...@times-visuals/sankey@1.2.0) (2019-06-14)
+
+
+### Features
+
+* BREAKING CHANGE Update all packages to BSD-3-Clause license ([87a5e01](https://github.com/times/times-visuals/commit/87a5e01))
+
+
+
+
+
 ## [1.1.3](https://github.com/times/times-visuals/compare/@times-visuals/sankey@1.1.2...@times-visuals/sankey@1.1.3) (2019-06-14)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/treemap",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Treemap",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -21,6 +21,6 @@
     "react": "^16.6.3"
   },
   "devDependencies": {
-    "@times-visuals/babel-configuration": "^1.0.3"
+    "@times-visuals/babel-configuration": "1.1.0"
   }
 }

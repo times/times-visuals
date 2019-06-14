@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/times/times-visuals/compare/@times-visuals/times-harness@1.2.0...@times-visuals/times-harness@1.2.1) (2019-06-14)
+
+
+### Bug Fixes
+
+* Add babel plugin-proposal-class-properties ([65a7bac](https://github.com/times/times-visuals/commit/65a7bac))
+
+
+
+
+
 # [1.2.0](https://github.com/times/times-visuals/compare/@times-visuals/times-harness@1.1.0...@times-visuals/times-harness@1.2.0) (2019-06-06)
 
 

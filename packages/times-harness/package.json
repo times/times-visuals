@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/times-harness",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Webpack harness environment for The Times website",
   "main": "lib/index.js",
   "module": "lib/index.js",

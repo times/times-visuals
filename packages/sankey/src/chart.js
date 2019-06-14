@@ -1,10 +1,12 @@
 /* global window */
 import * as selection from "d3-selection";
 import * as scale from "d3-scale";
+import * as jetpack from "d3-jetpack";
 
 const d3 = {
   ...selection,
-  ...scale
+  ...scale,
+  ...jetpack
 };
 
 export const getPosition = node => {
@@ -28,17 +30,17 @@ export const drawChart = (chartNode, data, d3sankey, onHover) => {
   if (!data) return;
 
   // set the dimensions and config.margin of the graph
-  const { width, height } = chartNode.getBoundingClientRect();
+  const { width } = chartNode.getBoundingClientRect();
   const isMobile = width < 500 ? true : false;
 
   const config = {
     width: width,
-    height: height,
+    height: 600,
     margin: {
-      top: 10,
-      right: 10,
-      bottom: 10,
-      left: 10
+      top: 50,
+      right: 50,
+      bottom: 30,
+      left: isMobile ? 70 : 150
     },
     get usableWidth() {
       return this.width - this.margin.left - this.margin.right;
@@ -49,10 +51,13 @@ export const drawChart = (chartNode, data, d3sankey, onHover) => {
   };
 
   // set the width and height of the svg
-  const svg = d3.select(chartNode).at({
-    width: config.width,
-    height: config.height
-  });
+  const svg = d3
+    .select(chartNode)
+    .append("svg")
+    .at({
+      width: config.width,
+      height: config.height
+    });
 
   const g = svg.append("g").at({
     transform: `translate(${config.margin.left},${config.margin.top})`,
@@ -63,7 +68,7 @@ export const drawChart = (chartNode, data, d3sankey, onHover) => {
   const sankey = d3sankey()
     .nodeWidth(36)
     .nodePadding(40)
-    .size([config.usableWidth, config.usableHeight]);
+    .size([config.width, config.height]);
 
   // Set the sankey diagram properties
   const path = sankey.link();
@@ -77,7 +82,7 @@ export const drawChart = (chartNode, data, d3sankey, onHover) => {
     .layout(32);
 
   // add in the links
-  const link = g
+  const link = svg
     .append("g")
     .selectAll(".link")
     .data(graph.links)
@@ -116,7 +121,7 @@ export const drawChart = (chartNode, data, d3sankey, onHover) => {
     });
 
   // add in the nodes
-  const node = g
+  const node = svg
     .append("g")
     .selectAll(".node")
     .data(graph.nodes)

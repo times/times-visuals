@@ -11,7 +11,8 @@
     "build-storybook": "build-storybook -o docs",
     "build": "lerna run build --stream",
     "publish-all": "sh ./scripts/publish.sh",
-    "test": "lerna run test --stream"
+    "test": "lerna run test --stream",
+    "test:update-snapshots": "lerna run test --stream -- -- -u"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",

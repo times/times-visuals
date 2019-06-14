@@ -1,0 +1,41 @@
+{
+  "name": "@times-visuals/postcode-search",
+  "version": "1.0.4",
+  "description": "Postcode search UI element, with optional Postcodes.io integration",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "dev": "src/index.js",
+  "author": "Chris Hutchinson <chris.hutchinson@thetimes.co.uk>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib --ignore **/__tests__",
+    "test": "jest --coverage"
+  },
+  "private": true,
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@testing-library/react": "^8.0.1",
+    "@times-visuals/babel-configuration": "^1.0.3",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "jest-fetch-mock": "^2.1.2",
+    "jest-styled-components": "^6.3.1"
+  },
+  "dependencies": {
+    "@times-visuals/styles": "^1.0.0",
+    "react": "^16.6.3",
+    "styled-components": "^4.2.1",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "./setupJest.js"
+    ],
+    "setupFilesAfterEnv": [
+      "./setupJestStyles.js"
+    ]
+  }
+}

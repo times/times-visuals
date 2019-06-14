@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/times/times-visuals/compare/@times-visuals/sankey@1.1.2...@times-visuals/sankey@1.1.3) (2019-06-14)
+
+
+### Bug Fixes
+
+* add jetpack dependency ([87858d9](https://github.com/times/times-visuals/commit/87858d9))
+
+
+
+
+
 ## [1.1.2](https://github.com/times/times-visuals/compare/@times-visuals/sankey@1.1.1...@times-visuals/sankey@1.1.2) (2019-06-13)
 
 

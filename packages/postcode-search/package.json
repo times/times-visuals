@@ -1,6 +1,6 @@
 {
   "name": "@times-visuals/postcode-search",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Postcode search UI element, with optional Postcodes.io integration",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -14,7 +14,6 @@
     "build": "babel src --out-dir lib --ignore **/__tests__",
     "test": "jest --coverage"
   },
-  "private": true,
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@testing-library/react": "^8.0.1",

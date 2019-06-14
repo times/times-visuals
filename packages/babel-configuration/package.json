@@ -4,7 +4,7 @@
   "description": "The Babel config for packages in times-visuals",
   "main": ".babelrc",
   "author": "Chris Hutchinson <chris.hutchinson@thetimes.co.uk>",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "private": true,
   "files": [
     "*"

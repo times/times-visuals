@@ -10,14 +10,12 @@ storiesOf("Elements/Headline", module)
       sidebar: Readme
     }
   })
-  .add("default", () => <Headline headline="This is a headline" />)
+  .add("default", () => <Headline>This is a headline</Headline>)
   .add("With a standfirst", () => (
-    <Headline headline="This is a headline" standfirst="This is a standfirst" />
+    <Headline standfirst="This is a standfirst">This is a headline</Headline>
   ))
   .add("With a label", () => (
-    <Headline
-      headline="This is a headline"
-      standfirst="This is a standfirst"
-      label="This is a label"
-    />
+    <Headline standfirst="This is a standfirst" label="This is a label">
+      This is a headline
+    </Headline>
   ));

@@ -17,5 +17,5 @@ $ npm add @times-visuals/headline
 ```jsx
 import Headline from "@times-visuals/headline";
 
-export default () => <Headline headline="This is a headline" />;
+export default () => <Headline>This is a headline</Headline>;
 ```

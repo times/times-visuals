@@ -1,0 +1,16 @@
+{
+  "name": "@times-visuals/headline",
+  "version": "1.0.0",
+  "description": "A headline template with optional standfirst and label",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "dev": "src/index.js",
+  "license": "BSD-3-Clause",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib"
+  },
+  "author": "Daniel Clark <daniel.clark@the-times.co.uk>"
+}

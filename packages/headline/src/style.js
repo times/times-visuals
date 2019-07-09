@@ -9,11 +9,22 @@ const smoothingRules = `
 
 export const HeadlineContainer = styled.div`
   width: 100%;
+
+  @media only screen and (min-width: ${breakpoints.micro}) and (max-width: ${breakpoints.mobile}) {
+    max-width: 498px;
+  }
+  @media only screen and (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
+    max-width: 78.8%;
+  }
+  @media only screen and (min-width: ${breakpoints.tablet}) and (max-width: ${breakpoints.desktop}) {
+    max-width: 683px;
+  }
+  @media only screen and (min-width: ${breakpoints.desktop}) {
+    max-width: 572px;
+  }
+  margin: auto;
   text-align: center;
   padding: 2rem 1rem;
-  @media only screen and (min-width: ${breakpoints.mobile}) {
-    margin: 0;
-  }
 
   h1,
   h2,
@@ -35,24 +46,6 @@ export const HeadlineContainer = styled.div`
     font-size: 1.8rem;
     color: #7c7c7c;
     line-height: 2.7rem;
-    width: 100%;
-
-    @media only screen and (max-width: ${breakpoints.micro}) {
-      width: 100%;
-    }
-    @media only screen and (min-width: ${breakpoints.micro}) and (max-width: ${breakpoints.mobile}) {
-      max-width: 498px;
-    }
-    @media only screen and (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
-      max-width: 78.8%;
-    }
-    @media only screen and (min-width: ${breakpoints.tablet}) and (max-width: ${breakpoints.desktop}) {
-      max-width: 683px;
-    }
-    @media only screen and (min-width: ${breakpoints.desktop}) {
-      max-width: 572px;
-    }
-    margin: auto;
   }
 
   h3 {

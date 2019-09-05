@@ -1,0 +1,14 @@
+{
+  "name": "component-wrapper",
+  "version": "1.0.0",
+  "description": "An interactive component wrapper",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib"
+  },
+  "author": "Daniel Clark <daniel.clark@the-times.co.uk>",
+  "license": "BSD-3-Clause"
+}

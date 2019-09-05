@@ -1,4 +1,4 @@
-# Headline
+# Component wrapper
 
 > An interactive component wrapper
 

@@ -35,17 +35,22 @@ export const HeadlineContainer = styled.div`
 
   h1 {
     font-family: "TimesModern-Bold";
-    font-size: 3rem;
+    font-size: 3.3rem;
     color: #1d1d1b;
-    line-height: 3.3rem;
     margin: auto;
+    padding-bottom: 1rem;
   }
 
   h2 {
-    font-family: "TimesDigital-Regular";
+    font-family: TimesDigitalW04-Regular;
     font-size: 1.8rem;
+    line-height: 2.3rem;
     color: #7c7c7c;
-    line-height: 2.7rem;
+
+    @media only screen and (min-width: ${breakpoints.mobile}) {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
   }
 
   h3 {

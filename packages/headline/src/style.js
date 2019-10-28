@@ -9,29 +9,48 @@ const smoothingRules = `
 
 export const HeadlineContainer = styled.div`
   width: 100%;
+
+  @media only screen and (min-width: ${breakpoints.micro}) and (max-width: ${breakpoints.mobile}) {
+    max-width: 498px;
+  }
+  @media only screen and (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
+    max-width: 78.8%;
+  }
+  @media only screen and (min-width: ${breakpoints.tablet}) and (max-width: ${breakpoints.desktop}) {
+    max-width: 683px;
+  }
+  @media only screen and (min-width: ${breakpoints.desktop}) {
+    max-width: 572px;
+  }
+  margin: auto;
   text-align: center;
-  margin: 0 1rem;
-  padding: 2rem 0;
-  @media only screen and (min-width: ${breakpoints.mobile}){
-      margin: 0;
+  padding: 2rem 1rem;
+
+  h1,
+  h2,
+  h3 {
+    font-weight: normal;
+    ${smoothingRules};
   }
 
   h1 {
     font-family: "TimesModern-Bold";
-    font-size: 3rem;
+    font-size: 3.3rem;
     color: #1d1d1b;
-    line-height: 3.3rem;
     margin: auto;
-    ${smoothingRules}
+    padding-bottom: 1rem;
   }
 
   h2 {
-    font-family: "TimesDigital-Regular";
+    font-family: TimesDigitalW04-Regular;
     font-size: 1.8rem;
+    line-height: 2.3rem;
     color: #7c7c7c;
-    line-height: 2.7rem;
-    ${smoothingRules};
 
+    @media only screen and (min-width: ${breakpoints.mobile}) {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
   }
 
   h3 {
@@ -43,9 +62,8 @@ export const HeadlineContainer = styled.div`
     font-family: GillSansMTStd-Medium, GillSansW01-Medium;
     font-weight: 500;
     padding-bottom: 1rem;
-    ${smoothingRules}
-    @media only screen and (min-width: ${breakpoints.mobile}){
-        font-size: 1.2rem;
+    @media only screen and (min-width: ${breakpoints.mobile}) {
+      font-size: 1.2rem;
     }
   }
 `;

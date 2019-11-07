@@ -1,12 +1,14 @@
 import React from "react";
-import { drawChart } from "./chart";
+import { drawChart, drawLayeredChart } from "./chart";
 
 import { TreemapContainer } from "./style";
 
 export class Treemap extends React.Component {
   componentDidMount() {
-    const { data, onHover } = this.props;
-    drawChart(this.chart, data, onHover);
+    const { data, onHover, layers } = this.props;
+    layers
+      ? drawLayeredChart(this.chart, "#254251", "#fff", onHover, data)
+      : drawChart(this.chart, data, onHover);
   }
 
   render() {

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/times/times-visuals/compare/@times-visuals/treemap@1.2.0...@times-visuals/treemap@1.2.1) (2019-11-11)
+
+**Note:** Version bump only for package @times-visuals/treemap
+
+
+
+
+
 # [1.2.0](https://github.com/times/times-visuals/compare/@times-visuals/treemap@1.1.1...@times-visuals/treemap@1.2.0) (2019-06-14)
 
 
